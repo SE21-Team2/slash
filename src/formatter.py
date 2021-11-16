@@ -14,6 +14,7 @@ the required format.
 from datetime import datetime
 import math
 
+
 def formatResult(website, titles, prices, links,ratings,df_flag, currency):
     """
     The formatResult function takes the scraped HTML as input, and extracts the 
@@ -26,20 +27,24 @@ def formatResult(website, titles, prices, links,ratings,df_flag, currency):
     """
 
     title, price, link, rating, converted_cur = '', '', '', '', ''
-    if titles: title = titles[0].get_text().strip()
-    if prices: price = prices[0].get_text().strip()
+    if titles:
+        title = titles[0].get_text().strip()
+    if prices:
+        price = prices[0].get_text().strip()
     if '$' not in price:
-        price='$'+price
-    if links: link = links[0]['href']
-    if ratings: rating = float(ratings[0].get_text().strip().split()[0])
-    #if df_flag==0: title=formatTitle(title)
-    #if df_flag==0: link=formatTitle(link)
-    if currency: converted_cur = getCurrency(currency, price)
+        price = '$'+price
+    if links:
+        link = links[0]['href']
+    formatted_link = link if 'https://' in link else f'https://www.{website}.com{link}'
+    if ratings:
+        rating = float(ratings[0].get_text().strip().split()[0])
+    if currency:
+        converted_cur = getCurrency(currency, price)
     product = {
         'timestamp': datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
         "title": title,
         "price": price, 
-        "link":f'www.{website}.com{link}', 
+        "link": formatted_link,
         "website": website,
         "rating" : rating,
         "converted price": converted_cur
@@ -69,7 +74,7 @@ def formatSearchQuery(query):
 def formatTitle(title):
     """ It formats titles extracted from the scraped HTML code.
     """
-    if(len(title) > 40):
+    if len(title) > 40:
         return title[:40] + "..."
     return title
 
@@ -80,13 +85,14 @@ def getNumbers(st):
     """
     ans = ''
     for ch in st:
-        if (ch >= '0' and ch <= '9') or ch == '.':
+        if ('0' <= ch <= '9') or ch == '.':
             ans += ch
     try:
         ans = float(ans)
     except:
         ans = math.inf
     return ans
+
 
 def getCurrency(currency, price):
     """
@@ -95,18 +101,18 @@ def getCurrency(currency, price):
     """
 
     converted_cur = 0.0
-    if len(price)>1 :
+    if len(price) > 1:
         if currency == "inr":
-            converted_cur = 75 * int(price[(price.index("$")+1):price.index(".")].replace(",",""))
+            converted_cur = 75 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
         elif currency == "euro":
-            converted_cur = 1.16 * int(price[(price.index("$")+1):price.index(".")].replace(",",""))
+            converted_cur = 1.16 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
         elif currency == "aud":
-            converted_cur = 1.34 * int(price[(price.index("$")+1):price.index(".")].replace(",",""))
+            converted_cur = 1.34 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
         elif currency == "yuan":
-            converted_cur = 6.40 * int(price[(price.index("$")+1):price.index(".")].replace(",",""))
+            converted_cur = 6.40 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
         elif currency == "yen":
-            converted_cur = 114.21 * int(price[(price.index("$")+1):price.index(".")].replace(",",""))
+            converted_cur = 114.21 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
         elif currency == "pound":
-            converted_cur = 0.74 * int(price[(price.index("$")+1):price.index(".")].replace(",",""))
-        converted_cur=currency.upper()+' '+str(converted_cur)
+            converted_cur = 0.74 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
+        converted_cur = currency.upper()+' '+str(converted_cur)
     return converted_cur
