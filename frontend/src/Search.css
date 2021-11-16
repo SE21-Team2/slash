@@ -1,0 +1,17 @@
+#search {
+    /* width: 600px; */
+    margin: auto;
+}
+
+#options-group {
+    display: flex;
+    text-align: left;
+}
+
+.option {
+    margin: 20px;
+}
+
+.option label {
+    /* display: block; */
+}
