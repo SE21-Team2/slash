@@ -1,47 +1,47 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import "./auth.css"
+import "./auth.css";
 
-function Login({ onSetUserLoggedIn }) {
+function SignUp() {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
-    const [invalidLogin, setInvalidLogin] = useState(false);
+    const [invalidSignUp, setInvalidSignUp] = useState(false);
 
     const navigate = useNavigate();
 
-    async function handleLogin(e) {
+    async function handleSignUp(e) {
         e.preventDefault();
-        const { valid } = await fetch("/login", {
+
+        const { valid } = await fetch("/signup", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
-        }).then(res => res.json());
-        
+        });
+
         if (valid) {
-            onSetUserLoggedIn(username);
-            navigate("/");
+            navigate("/login");
         } else {
-            setInvalidLogin(true);
+            setInvalidSignUp(true);
         }
     }
 
     return (
         <React.Fragment>
-            {invalidLogin && <p style={{ color: "red" }}>Invalid login credentials</p>}
-            <h2>Log In</h2>
-            <form onSubmit={handleLogin}>
+            {invalidSignUp && <p style={{ color: "red" }}>A user with this user name already exists</p>}
+            <h2>Sign Up</h2>
+            <form onSubmit={handleSignUp}>
                 <h4>Username</h4>
                 <input type="text" onChange={e => setUsername(e.target.value)} />
                 <h4>Password</h4>
                 <input type="password" onChange={e => setPassword(e.target.value)} />
                 <br />
-                <input type="submit" className="login-signup-button" value="Log In" />
+                <input type="submit" className="login-signup-button" value="Sign Up" />
             </form>
-            <h4>Don't have an account? <Link to="/signup" className="login-signup-link">Sign Up</Link></h4>
+            <h4>Already have an account? <Link to="/login" className="login-signup-link">Login</Link></h4>
         </React.Fragment>
     );
 }
 
-export default Login;
+export default SignUp;

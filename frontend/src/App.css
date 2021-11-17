@@ -3,13 +3,30 @@ main {
     margin: 30px;
     margin: auto;
     text-align: center;
+
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: rgb(42, 153, 125);
+    padding: 30px;
 }
 
 #slash-title {
     font-size: 50px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
 }
 
-#login-button {
+.login-logout-button {
     float: right;
+    clear: both;
+}
+
+#top-right-links {
+    float: right;
+    display: flex;
+    font-size: 20px;
+}
+
+#top-right-links a {
+    margin-right: 50px;
 }
