@@ -4,25 +4,23 @@ You may use, distribute and modify this code under the
 terms of the MIT license.
 You should have received a copy of the MIT license with
 this file. If not, please write to: secheaper@gmail.com
+The formatter module focuses on processing raw text and returning it in
+the required format.
 """
 
-"""
-The formatter module focuses on processing raw text and returning it in 
-the required format. 
-"""
-
-from datetime import datetime
 import math
+from datetime import datetime
 
 
-def formatResult(website, titles, prices, links,ratings,df_flag, currency):
+def formatResult(website, titles, prices, links, ratings, df_flag, currency):
     """
-    The formatResult function takes the scraped HTML as input, and extracts the 
+    The formatResult function takes the scraped HTML as input, and extracts the
     necessary values from the HTML code. Ex. extracting a price '$19.99' from
     a paragraph tag.
-    Parameters: titles- scraped titles of the products, prices- scraped prices of the products, 
-    links- scraped links of the products on the respective e-commerce sites, 
-    ratings-scraped ratings of the product
+    Parameters: titles- scraped titles of the products,
+                prices- scraped prices of the products,
+                links- scraped links of the products on the respective e-commerce sites,
+                ratings-scraped ratings of the product
     Returns: A dictionary of all the parameters stated above for the product
     """
 
@@ -43,33 +41,34 @@ def formatResult(website, titles, prices, links,ratings,df_flag, currency):
     product = {
         'timestamp': datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
         "title": title,
-        "price": price, 
+        "price": price,
         "link": formatted_link,
         "website": website,
-        "rating" : rating,
+        "rating": rating,
         "converted price": converted_cur
     }
-    
+
     return product
 
 
-def sortList(arr, sortBy, reverse):
-    """ It sorts the products list based on the flags provided as arguements. Currently, it supports sorting by price.
-        Parameters- SortBy- "pr": sorts by price, SortBy- "ra": sorts by rating
+def sortList(arr, sort_by, reverse):
+    """ It sorts the products list based on the flags provided as arguments.
+        Currently, it supports sorting by price.
+        Parameters- SortBy- "pr": sorts by price, "ra": sorts by rating
         Returns- Sorted list of the products based on the parameter requested by the user
     """
-    if sortBy == "pr":
+    if sort_by == "pr":
         return sorted(arr, key=lambda x: getNumbers(x["price"]), reverse=reverse)
-    # To-do: sort by rating
-    elif sortBy == "ra":
+    if sort_by == "ra":
         return sorted(arr, key=lambda x: getNumbers(x["rating"]), reverse=reverse)
-        pass
     return arr
+
 
 def formatSearchQuery(query):
     """ It formats the search string into a string that can be sent as a url paramenter.
     """
     return query.replace(" ", "+")
+
 
 def formatTitle(title):
     """ It formats titles extracted from the scraped HTML code.
@@ -89,14 +88,14 @@ def getNumbers(st):
             ans += ch
     try:
         ans = float(ans)
-    except:
+    except ValueError:
         ans = math.inf
     return ans
 
 
 def getCurrency(currency, price):
     """
-    The getCurrency function converts the prices listed in USD to user specified currency. 
+    The getCurrency function converts the prices listed in USD to user specified currency.
     Currently it supports INR, EURO, AUD, YUAN, YEN, POUND
     """
 
