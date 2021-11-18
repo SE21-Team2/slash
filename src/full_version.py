@@ -104,7 +104,7 @@ class full_version:
 
     def scrape(self, prod):
         """ calls the scraper function from scraper.py"""
-        results = scraper.driver(prod, df_flag=1, currency=self.currency)
+        results = scraper.driver(prod, currency=self.currency)
         self.df = pd.DataFrame.from_dict(results, orient='columns')
         print(self.df.replace("", np.nan).dropna())
 

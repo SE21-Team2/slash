@@ -7,7 +7,7 @@ this file. If not, please write to: secheaper@gmail.com
 
 """
 
-import formatter
+import result_formatter
 from bs4 import BeautifulSoup
 
 def test_sortList():
@@ -17,8 +17,8 @@ def test_sortList():
     arr = [{"price":"$10"}, {"price":"$20"}, {"price":"$0"}]
     ansArr = [{"price":"$0"}, {"price":"$10"}, {"price":"$20"}]
     revAnsArr = [{"price":"$20"}, {"price":"$10"}, {"price":"$0"}]
-    assert formatter.sortList(arr, "pr", False) == ansArr
-    assert formatter.sortList(arr, "pr", True) == revAnsArr
+    assert result_formatter.sortList(arr, "pr", False) == ansArr
+    assert result_formatter.sortList(arr, "pr", True) == revAnsArr
 
 def test_formatResults():
     """
@@ -28,7 +28,7 @@ def test_formatResults():
     prices = [BeautifulSoup('<div class="someclass">$0.99  </div>', "html.parser")]
     links = []
 
-    product = formatter.formatResult("example", titles, prices, links,"",0,"")
+    product = result_formatter.formatResult("example", titles, prices, links, "", 0, "")
     ans = {"title":"title", "price":"$0.99", "website":"example"}
     print(product["website"], ans["website"])
 

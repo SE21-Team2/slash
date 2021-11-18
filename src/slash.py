@@ -13,7 +13,7 @@ import os
 import argparse
 import pandas as pd
 import scraper
-import formatter
+import result_formatter
 import full_version
 
 
@@ -45,7 +45,7 @@ def main():
     results = scraper.driver(args.search, args.currency, args.num, csv=args.csv, cd=args.cd, )
 
     for sortBy in args.sort:
-        results = formatter.sortList(results, sortBy, args.des)
+        results = result_formatter.sortList(results, sortBy, args.des)
 
     print()
     print()

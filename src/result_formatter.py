@@ -12,15 +12,17 @@ import math
 from datetime import datetime
 
 
-def formatResult(website, titles, prices, links, ratings, df_flag, currency):
+def formatResult(website, titles, prices, links, ratings, currency):
     """
     The formatResult function takes the scraped HTML as input, and extracts the
     necessary values from the HTML code. Ex. extracting a price '$19.99' from
     a paragraph tag.
-    Parameters: titles- scraped titles of the products,
+    Parameters: website- name of the website where the result is from
+                titles- scraped titles of the products,
                 prices- scraped prices of the products,
                 links- scraped links of the products on the respective e-commerce sites,
-                ratings-scraped ratings of the product
+                ratings-scraped ratings of the product,
+                currency- currency type entered by the user
     Returns: A dictionary of all the parameters stated above for the product
     """
 

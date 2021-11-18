@@ -14,7 +14,7 @@ from datetime import datetime
 import pandas as pd
 from bs4 import BeautifulSoup
 import requests
-import formatter
+import result_formatter
 
 
 def httpsGet(URL):
@@ -32,15 +32,14 @@ def httpsGet(URL):
     return BeautifulSoup(soup1.prettify(), "html.parser")
 
 
-def searchAmazon(query, df_flag, currency):
+def searchAmazon(query, currency):
     """
     The searchAmazon function scrapes amazon.com
     Parameters: query- search query for the product,
-                df_flag- flag variable,
                 currency- currency type entered by the user
     Returns a list of items available on Amazon.com that match the product entered by the user.
     """
-    query = formatter.formatSearchQuery(query)
+    query = result_formatter.formatSearchQuery(query)
     URL = f'https://www.amazon.com/s?k={query}'
     page = httpsGet(URL)
     results = page.findAll("div", {"data-component-type": "s-search-result"})
@@ -49,20 +48,19 @@ def searchAmazon(query, df_flag, currency):
         titles, prices, links = res.select("h2 a span"), res.select("span.a-price span"), res.select(
             "h2 a.a-link-normal")
         ratings = res.select("span.a-icon-alt")
-        product = formatter.formatResult("amazon", titles, prices, links, ratings, df_flag, currency)
+        product = result_formatter.formatResult("amazon", titles, prices, links, ratings, currency)
         products.append(product)
     return products
 
 
-def searchWalmart(query, df_flag, currency):
+def searchWalmart(query, currency):
     """
     The searchWalmart function scrapes walmart.com
     Parameters: query- search query for the product,
-                df_flag- flag variable,
                 currency- currency type entered by the user
     Returns a list of items available on walmart.com that match the product entered by the user
     """
-    query = formatter.formatSearchQuery(query)
+    query = result_formatter.formatSearchQuery(query)
     URL = f'https://www.walmart.com/search?q={query}'
     page = httpsGet(URL)
     results = page.findAll("div", {"data-item-id": True})
@@ -72,20 +70,19 @@ def searchWalmart(query, df_flag, currency):
     for res in results:
         titles, prices, links = res.select("span.lh-title"), res.select("div.lh-copy"), res.select("a")
         ratings = res.findAll("span", {"class": "w_DJ"}, text=pattern)
-        product = formatter.formatResult("walmart", titles, prices, links, ratings, df_flag, currency)
+        product = result_formatter.formatResult("walmart", titles, prices, links, ratings, currency)
         products.append(product)
     return products
 
 
-def searchEtsy(query, df_flag, currency):
+def searchEtsy(query, currency):
     """
     The searchEtsy function scrapes Etsy.com
     Parameters: query- search query for the product,
-                df_flag- flag variable,
                 currency- currency type entered by the user
     Returns a list of items available on Etsy.com that match the product entered by the user
     """
-    query = formatter.formatSearchQuery(query)
+    query = result_formatter.formatSearchQuery(query)
     url = f'https://www.etsy.com/search?q={query}'
     products = []
     headers = {
@@ -99,26 +96,25 @@ def searchEtsy(query, df_flag, currency):
             links = link_str
         titles, prices = (item.select("h3")), (item.select(".currency-value"))
         ratings = item.select('span.screen-reader-only')
-        product = formatter.formatResult("Etsy", titles, prices, links, ratings, df_flag, currency)
+        product = result_formatter.formatResult("Etsy", titles, prices, links, ratings, currency)
         products.append(product)
     return products
 
 
-def driver(product, currency, num=None, df_flag=0, csv=False, cd=None):
+def driver(product, currency, num=None, csv=False, cd=None):
     """
     Main driver for the scraper
     Parameters: product- search query for the product,
                 currency- currency type entered by the user,
                 num- number of products to list
-                df_flag- flag variable,
                 csv- option to save as csv,
                 cd- directory to store csv file if csv=True
     Returns csv is the user enters the --csv arg,
     else will display the result table in the terminal based on the args entered by the user
     """
-    products_1 = searchAmazon(product, df_flag, currency)
-    products_2 = searchWalmart(product, df_flag, currency)
-    products_3 = searchEtsy(product, df_flag, currency)
+    products_1 = searchAmazon(product, currency)
+    products_2 = searchWalmart(product, currency)
+    products_3 = searchEtsy(product, currency)
     results = products_1 + products_2 + products_3
     result_condensed = products_1[:num] + products_2[:num] + products_3[:num]
     result_condensed = pd.DataFrame.from_dict(result_condensed, orient='columns')
