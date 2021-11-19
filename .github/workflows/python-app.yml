@@ -25,7 +25,9 @@ jobs:
       run: |
         pylint src
     - name: Test with pytest
-      run: pytest
+      run: |
+        export PYTHONPATH=src
+        pytest
     - name: Generate coverage
       run: pytest --cov=./ --cov-report=xml
     - name: Upload coverage to Codecov
