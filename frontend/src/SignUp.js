@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { IconContext } from "react-icons";
+import { BiUser } from "react-icons/bi";
+import { AiOutlineLock } from "react-icons/ai";
 
 import "./auth.css";
 
@@ -33,9 +36,15 @@ function SignUp() {
             <h2>Sign Up</h2>
             <form onSubmit={handleSignUp}>
                 <h4>Username</h4>
-                <input type="text" onChange={e => setUsername(e.target.value)} />
+                <div className="icon-text-container">
+                    <IconContext.Provider value={{ className: "text-icon" }}><BiUser /></IconContext.Provider>
+                    <input type="text" size="30" onChange={e => setUsername(e.target.value)} />
+                </div>
                 <h4>Password</h4>
-                <input type="password" onChange={e => setPassword(e.target.value)} />
+                <div className="icon-text-container">
+                    <IconContext.Provider value={{ className: "text-icon" }}><AiOutlineLock /></IconContext.Provider>
+                    <input type="password" size="30" onChange={e => setPassword(e.target.value)} />
+                </div>
                 <br />
                 <input type="submit" className="login-signup-button" value="Sign Up" />
             </form>

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import "./Items.css";
-
 function Items({ items, userLoggedIn }) {
     const [wishlist, setWishlist] = useState();
 
@@ -38,7 +36,7 @@ function Items({ items, userLoggedIn }) {
     }
 
     return (
-        <table id="item-table">
+        <table className="item-table">
             <tr>
                 <th>Name</th>
                 <th>Price</th>
@@ -61,10 +59,10 @@ function Items({ items, userLoggedIn }) {
 
 const Item = ({ item, wishlist, onAddToWishlist, onRemoveFromWishlist }) => (
     <tr>
-        <td>{item.name}</td>
+        <td className="name-td">{item.name}</td>
         <td>{item.price}</td>
         <td>{item.website}</td>
-        <td><a href={item.link}>{item.link}</a></td>
+        <td className="link-td"><a href={item.link}>{item.link}</a></td>
         <td>{item.rating}</td>
         {wishlist && 
             <td>

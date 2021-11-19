@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import "./Items.css";
-
 function Wishlist({ userLoggedIn }) {
     const [wishlist, setWishlist] = useState();
 
@@ -25,7 +23,7 @@ function Wishlist({ userLoggedIn }) {
     return (
         <React.Fragment>
             <h2>Wish List</h2>
-            <table id="item-table">
+            <table className="item-table">
                 <tr>
                     <th>Name</th>
                     <th>Price</th>

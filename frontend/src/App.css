@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 main {
     width: 800px;
     margin: 30px;
@@ -11,19 +13,18 @@ main {
 }
 
 #slash-title {
-    font-size: 50px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 30px 0;
+    font-size: 80px;
+    font-family: 'Bebas Neue', cursive;
     text-align: center;
-}
-
-.login-logout-button {
-    float: right;
-    clear: both;
+    margin-left: 300px;
 }
 
 #top-right-links {
     float: right;
     display: flex;
+    justify-content: right;
+    width: 300px;
     font-size: 20px;
 }
 

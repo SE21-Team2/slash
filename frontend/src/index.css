@@ -14,3 +14,64 @@ a {
 a:hover {
     opacity: 0.6;
 }
+
+input[type=submit]:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+hr {
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.icon-text-container {
+    position: relative;
+    display: inline;
+}
+
+.icon-text-container input[type=text], .icon-text-container input[type=password] {
+    padding: 6px;
+    border-radius: 10px;
+    border: none;
+    box-sizing: border-box;
+    text-indent: 25px;
+    font-size: 16px;
+}
+
+.text-icon {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #888;
+    font-size: 15px;
+}
+
+.item-table {
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.item-table th, .item-table td {
+    padding: 5px;
+}
+
+.item-table th {
+    border-bottom: 1px solid black;
+}
+
+.item-table td {
+    border-top: 1px solid black;
+}
+
+.name-td {
+    width: 200px;
+}
+
+.link-td {
+    width: 350px;
+}
