@@ -14,7 +14,7 @@ def test_getCurrency():
     Checks the getNumbers function
     """
     # test valid currency
-    assert result_formatter.getCurrency("inr", "$18.99") == 1350
+    assert result_formatter.getCurrency("inr", "$18.99") == "INR 1350"
     # test unknown currency
     assert result_formatter.getCurrency("ntd", "$6") == "NTD 0.00"
     # test empty currency
