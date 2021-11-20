@@ -72,12 +72,13 @@ def formatSearchQuery(query):
     return query.replace(" ", "+")
 
 
-def formatTitle(title):
-    """ It formats titles extracted from the scraped HTML code.
-    """
-    if len(title) > 40:
-        return title[:40] + "..."
-    return title
+# def formatTitle(title):
+#     """ It formats titles extracted from the scraped HTML code.
+#     """
+#     title = title.strip()
+#     if len(title) > 40:
+#         return title[:40] + "..."
+#     return title
 
 
 def getNumbers(st):
