@@ -1,17 +1,19 @@
 <p align="center"><img width="500" src="./assets/slash.png"></p>
 
-![GitHub](https://img.shields.io/github/license/SEProjGrp5/slash)
-[![DOI](https://zenodo.org/badge/423285546.svg)](https://zenodo.org/badge/latestdoi/423285546)
+![Python](https://img.shields.io/badge/python-v3.8+-yellow.svg)
+![GitHub](https://img.shields.io/github/license/SE21-Team2/slash)
 ![Github](https://img.shields.io/badge/language-python-red.svg)
-![GitHub issues](https://img.shields.io/github/issues-raw/SEProjGrp5/slash)
-![Github closes issues](https://img.shields.io/github/issues-closed-raw/SEProjGrp5/slash)
-![Github pull requests](https://img.shields.io/github/issues-pr/SEProjGrp5/slash)
-![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/SEProjGrp5/slash)
-[![codecov](https://codecov.io/gh/sskarra1234/slash/branch/main/graph/badge.svg?token=JMI26I4YVU)](https://codecov.io/gh/sskarra1234/slash)
-[![Pylint](https://github.com/SEProjGrp5/slash/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/SEProjGrp5/slash/actions/workflows/pylint.yml)
-[![Python Style Checker](https://github.com/SEProjGrp5/slash/actions/workflows/style_checker.yml/badge.svg?branch=main)](https://github.com/SEProjGrp5/slash/actions/workflows/style_checker.yml)
+![GitHub issues](https://img.shields.io/github/issues-raw/SE21-Team2/slash)
+![Github closes issues](https://img.shields.io/github/issues-closed-raw/SE21-Team2/slash)
+![Github pull requests](https://img.shields.io/github/issues-pr/SE21-Team2/slash)
+![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/SE21-Team2/slash)
+[![codecov](https://codecov.io/gh/SE21-Team2/slash/branch/main/graph/badge.svg?token=K0UIYGW138)](https://codecov.io/gh/SE21-Team2/slash)
+![Lines of code](https://img.shields.io/tokei/lines/github/SE21-Team2/slash)
+![Build Status](https://github.com/SE21-Team2/slash/actions/workflows/python-app.yml/badge.svg)
+[![DOI](https://zenodo.org/badge/423285546.svg)](https://zenodo.org/badge/latestdoi/423285546)
 
-Slash is a command line tool that scrapes the most popular e-commerce websites to get the best deals on the searched items across these websites. 
+
+Slash is a web application that scrapes the most popular e-commerce websites to get the best deals on the searched items across these websites. 
 - **Fast**: With slash, you can save over 50% of your time by comparing deals across websites within seconds
 - **Easy**: Slash uses very easy commands to filter, sort and search your items
 - **Powerful**: Quickly alter the commands to get desired results
@@ -21,10 +23,12 @@ Slash is a command line tool that scrapes the most popular e-commerce websites t
   ::
   <a href="#golf-flags-and-command-line-arguments">Flags & Args</a>
   ::
-  <a href="#dizzy-whats-new-in-phase-2"> Whats new in Phase 2? </a>
+  <a href="#dizzy-whats-new-in-phase-2"> Phase 2 </a>
   ::
-  <a href="#muscle-whats-next-for-phase-3"> What's next for Phase 3? </a>
+  <a href="#muscle-whats-new-in-phase-3"> Phase 3 </a>
   ::
+  <a href="#earth_americas-whats-next"> Future </a>
+  ::  
   <a href="#card_index_dividers-some-examples">Examples</a>
   ::
   <a href="#thought_balloon-use-case">Use Case</a>
@@ -45,26 +49,30 @@ Slash is a command line tool that scrapes the most popular e-commerce websites t
 
 :rocket: Installation
 ---
-1. Clone the Github repository to a desired location on your computer. You will need [git](https://git-scm.com/) to be preinstalled on your machine. Once the repository is cloned, you will then ```cd``` into the local repository.
-```
-git clone https://github.com/secheaper/slash.git
-cd slash
-```
-2. This project uses Python 3, so make sure that [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/) are preinstalled. All requirements of the project are listed in the ```requirements.txt``` file. Use pip to install all of those.
-```
-pip3 install -r requirements.txt
-```
+1. Ensure you have the following installed:
+    * [Python 3](https://www.python.org/downloads/) 
+    * [pip](https://pip.pypa.io/en/stable/installation/)
+    * [git](https://git-scm.com/)
+2. Clone this repo onto your local machine
+    ```
+    git clone https://github.com/SE21-Team2/slash.git
+    cd slash
+    ```
+3. In the repository directory, run
+    ```
+    pip install -r requirements.txt
+    ```
 4. Once all the requirements are installed, you will have to ```cd``` into the ```src``` folder. Once in the ```src``` folder, use the python command to run the ```slash.py``` file.
-```
-cd src
-
-For Mac
-python3 slash.py --search socks
-
-For Windows
-python slash.py --search socks
-```
-:golf: Flags and Command Line Arguments
+    ```
+    cd src
+    
+    For Mac
+    python3 slash.py --search socks
+    
+    For Windows
+    python slash.py --search socks
+    ```
+:golf: Flags and Command Line Arguments 
 ---
 Currently the tool supports the following flags and command line arguments. These flags and arguments can be used to quickly filter and guide the search to get you the best results very quickly.
 
@@ -184,39 +192,8 @@ python slash.py --search "socks" --num 5
 14  04/11/2021 13:13:37  Customized Dog Socks - Put Your Cute...   $8.99  www.Etsy.comhttps://www.etsy.com/lis...     Etsy      5
 ```
 
-:dizzy: What's new in Phase 2?
----
-#### 1. Sort by Rating
-```--sort``` accepts the argument "ra" that determine how the tool sorts and filters the requested products
-after scraping on the basis of ratings of the product . 
-Example:
-```
-For Mac
-python3 slash.py --search "philips hue" --sort ra
-
-For Windows
-python slash.py --search "philips hue" --sort ra
-
-```
-
-```
-
-           timestamp                                       title    price   website      rating 
- 0  03/11/2021 21:42:53  Hanes Women's Cool Comfort Ankle Socks, ...  $10.97   walmart         4.2 
- 1  03/11/2021 21:42:53  Hanes Women's Cool Comfort Crew Socks, 1...  $10.97   walmart         4.2 
- 2  03/11/2021 21:42:53  Hanes Mens FreshIQ Ankle Cushion Socks, ...  $13.46   walmart         4.2 
- 3  03/11/2021 21:42:51  10 Pairs Ankle Socks No Show Sock Low-Cu...  $11.95   amazon          4.3 
- 4  03/11/2021 21:42:50  Mens Cushioned Work Socks 10 Pairs           $12.10   amazon          4.5 
- 5  03/11/2021 21:42:50  Women's 6-Pack Performance Cotton Cushio...  $17.70   amazon          4.5 
- 6  03/11/2021 21:42:54  PDF Crikey Crocodile Socks Knit Animal S...  7.50     Etsy            4.5 
- 7  03/11/2021 21:42:54  5socks /set -  Cotton Women's Socks          16.00    Etsy            5   
- 8  03/11/2021 21:42:54  Follkee Women's Alpaca Wool Socks Perfec...  18.49    Etsy            5   
-
-
-```
-
-#### 2.Currency
-```--currency``` provides nasic currency conversion for different currencies like INR, EURO, AUD, YUAN, YEN and POUND.
+#### 5.Currency
+```--currency``` provides basic currency conversion for different currencies like INR, EURO, AUD, YUAN, YEN and POUND.
 
 Example:
 ```
@@ -231,16 +208,8 @@ python slash.py --search "socks" --currency "inr"
 ![image](https://user-images.githubusercontent.com/48826459/140242430-0d7d2707-095a-4a2d-86a7-c5e91b88d725.png)
 
 
-#### 3. Added new e-commerce site - ETSY
-A new e-commerce site 'Etsy' has been added in this project. Information such as the product type, product name, price, ratings, etc. has been scraped from the website.
 
-Example:
-
-![image](https://user-images.githubusercontent.com/48826459/140245385-00359c50-4e89-46ff-866d-26a5879d43d4.png)
-
-
-
-#### 4. Main Menu 
+#### 6. Main Menu 
 ```--full``` command is used to display the complete menu for the project. If the argument passed is "T", the Full version of the app will be displayed. If the argument passed is "F", the mini version of the app is displayed.
 
 Example:
@@ -391,7 +360,7 @@ Select from following:
 Thank You for Using Slash
 ```
 
-#### 5. Save products in csv
+#### 7. Save products in csv
 ```--csv``` command is used to save the complete list of the searched product in a csv format.
 ```--cd``` command here is used to change the directory for the csv file.
 Example:
@@ -412,28 +381,30 @@ File Name: C:\Anant\NCSU\slash_test_csv\socks211104_1223.csv
 
 
 
+:muscle: What's New in Phase 3?
+---
+For a list of specific changes in phase 3, see [Project 3 Changes](https://github.com/SE21-Team2/slash/docs/Project3Changes.md).
 
-:muscle: What's next for Phase 3?
+:earth_americas: What's next?
 ---
 - Creating ordering and payment functionality for customers to directly order from command line
 - Scrape more e-commerce websites for wider range of options 
 - Add more parameters such as delivery days to get more information about the product 
 - Add functionality to store multiple wishlists from the output generated using the search query 
 - Add functionality to edit, delete, rename wishlists 
-- Add interactive user interface 
 - Add real time dynamic currency converters for different currencies all around the world
 
 :thought_balloon: Use Case
 ---
 * ***Students***: Students coming to university are generally on a budget and time constraint and generally spend hours wasting time to search for products on Websites. Slash is the perfect tool for these students that slashes all the unnecessary details on a website and helps them get prices for a product across multiple websites.Make the most of this tool in the upcoming Black Friday Sale.
-* ***Data Analysts***: Finding data for any project is one of the most tedious job for a data analyst, and the datasets found might not be the most recent one. Using slash, they can create their own dataset in real time and format it as per their needs so that they can focus on what is actually inportant.
+* ***Data Analysts***: Finding data for any project is one of the most tedious job for a data analyst, and the datasets found might not be the most recent one. Using slash, they can create their own dataset in real time and format it as per their needs so that they can focus on what is actually important.
 
 :page_facing_up: Why
 ---
 - In a market where we are spoilt for choices, we often look for the best deals.  
 - The ubiquity of internet access has leveled the retail playing field, making it easy for individuals and businesses to sell products without geographic limitation. In 2020, U.S. e-commerce sales, receiving a boost due to the COVID-19 pandemic, grew 44% and represented more than 21% of total retail sales, according to e-commerce information source Internet Retailer.
 - The growth of e-commerce has not only changed the way customers shop, but also their expectations of how brands approach customer service, personalize communications, and provide customers choices.
-- E-commerce market has prompted cut throat competition amongst dealers, which is discernable through the price patterns for products of major market players. Price cuts are somewhat of a norm now and getting the best deal for your money can sometimes be a hassle (even while online shopping).
+- E-commerce market has prompted cut throat competition amongst dealers, which is discernible through the price patterns for products of major market players. Price cuts are somewhat of a norm now and getting the best deal for your money can sometimes be a hassle (even while online shopping).
 - This is what Slash aims to reduce by giving you an easy to use, all in one place solution for finding the best deals for your products that major market dealers have to offer!
 - Slash in its current form is for people who have some understanding of python and are comfortable in using the command line interface to interact with systems.
 - Future updates aim to encompass a wide variety of users irrespective of their computer knowledge and background.
@@ -442,6 +413,19 @@ File Name: C:\Anant\NCSU\slash_test_csv\socks211104_1223.csv
 :sparkles: Contributors
 ---
 
+### Project 3
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/TanyaChu"><img src="https://github.com/tanyachu.png" width="75px;" alt=""/><br /><sub><b>Tanya Chu</b></sub></a></td>
+    <td align="center"><a href="https://github.com/SteveJones92"><img src="https://github.com/SE21-Team2/slash/blob/main/assets/SteveJones92.png" width="75px;" alt=""/><br /><sub><b>Steven Jones</b></sub></a></td>
+    <td align="center"><a href="https://github.com/shikhanair"><img src="https://github.com/SE21-Team2/slash/blob/main/assets/shikhanair.png" width="75px;" alt=""/><br /><sub><b>Shikha Nair</b></sub></a></td>
+    <td align="center"><a href="https://github.com/alexsnezhko3"><img src="https://github.com/SE21-Team2/slash/blob/main/assets/alexsnezhko3.png" width="75px;" alt=""/><br /><sub><b>Alex Snezhko</b></sub></a></td>
+    <td align="center"><a href="https://github.com/prdhnchtn"><img src="https://github.com/SE21-Team2/slash/blob/main/assets/prdhnchtn.png" width="75px;" alt=""/><br /><sub><b>Pradhan Chetan Venkataramaiah</b></sub></a></td>
+  </tr>
+</table>
+
+### Project 2
 <table>
   <tr>
     <td align="center"><a href="https://github.com/antgad"><img src="https://avatars.githubusercontent.com/u/37169203?v=4" width="75px;" alt=""/><br /><sub><b>Anant Gadodia</b></sub></a></td>
@@ -452,7 +436,13 @@ File Name: C:\Anant\NCSU\slash_test_csv\socks211104_1223.csv
   </tr>
 </table>
 
-:email: Support
----
-
-For any queries and help, please reach out to us at: secheaper@gmail.com
+### Project 1
+<table>
+  <tr>
+    <td align="center"><a href="http://www.shubhammankar.com/"><img src="https://avatars.githubusercontent.com/u/29366125?v=4" width="75px;" alt=""/><br /><sub><b>Shubham Mankar</b></sub></a></td>
+    <td align="center"><a href="https://github.com/pratikdevnani"><img src="https://avatars.githubusercontent.com/u/43350493?v=4" width="75px;" alt=""/><br /><sub><b>Pratik Devnani</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/moksh98"><img src="https://avatars.githubusercontent.com/u/29693765?v=4" width="75px;" alt=""/><br /><sub><b>Moksh Jain</b></sub></a><br /></td>
+    <td align="center"><a href="https://rahilsarvaiya.tech/"><img src="https://avatars0.githubusercontent.com/u/32304956?v=4" width="75px;" alt=""/><br /><sub><b>Rahil Sarvaiya</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/annie0467"><img src="https://avatars.githubusercontent.com/u/17164255?v=4" width="75px;" alt=""/><br /><sub><b>Anushi Keswani</b></sub></a><br /></td>
+  </tr>
+</table>

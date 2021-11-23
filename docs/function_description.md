@@ -6,7 +6,7 @@ Provides help for every argument
 ### *def httpsGet(URL)*: 
 The httpsGet function makes HTTP called to the requested URL with custom headers
 
-### *def searchAmazon(query, df_flag, currency)*:  
+### *def searchAmazon(query, currency)*:  
 The searchAmazon function scrapes amazon.com\
 **Parameters**:\
 query- search query for the product\
@@ -15,7 +15,7 @@ currency- currency type entered by the user
 
 Returns a list of items available on Amazon.com that match the product entered by the user.
 
-### *def searchWalmart(query, df_flag, currency)*:
+### *def searchWalmart(query, currency)*:
 The searchWalmart function scrapes walmart.com\
 **Parameters**:\
 query- search query for the product\
@@ -24,7 +24,7 @@ currency- currency type entered by the user
 
 Returns a list of items available on walmart.com that match the product entered by the user.
 
-### *def searchEtsy(query, df_flag, currency)*:
+### *def searchEtsy(query, currency)*:
  The searchEtsy function scrapes Etsy.com\
  **Parameters**:\
 query- search query for the product\
@@ -33,11 +33,11 @@ currency- currency type entered by the user
 
 Returns a list of items available on Etsy.com that match the product entered by the user
 
-### *def driver(product, currency, num=None, df_flag=0,csv=False,cd=None)*:
+### *def driver(product, currency, num=None, csv=False,cd=None)*:
 Returns csv if the user enters the --csv arg, else will display the result table in the terminal based on the args entered by the user.
 
 ## **formatter.py**
-### *def formatResult(website, titles, prices, links,ratings,df_flag, currency)*:
+### *def formatResult(website, titles, prices, links, ratings, currency)*:
 The formatResult function takes the scraped HTML as input, and extracts the necessary values from the HTML code. Ex. extracting a price '$19.99' from a paragraph tag.\
 **Parameters**: \
 titles- scraped titles of the products\
@@ -56,9 +56,6 @@ Returns- Sorted list of the products based on the parameter requested by the use
 
 ### *def formatSearchQuery(query)*:
 It formats the search string into a string that can be sent as a url paramenter.
-
-### *def formatTitle(title)*:
-It formats titles extracted from the scraped HTML code.
 
 ### *def getNumbers(st)*:
 It extracts float values for the price from a string.\
