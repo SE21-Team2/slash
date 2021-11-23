@@ -21,23 +21,19 @@ Slash is a web application that scrapes the most popular e-commerce websites to 
 <p align="center">
   <a href="#rocket-installation">Installation</a>
   ::
-  <a href="#golf-flags-and-command-line-arguments">Flags & Args</a>
-  ::
-  <a href="#dizzy-whats-new-in-phase-2"> Phase 2 </a>
+  <a href="#golf-flags-and-command-line-arguments">Flags & Args</a>  
+  ::  
+  <a href="#card_index_dividers-some-examples">Examples</a>
   ::
   <a href="#muscle-whats-new-in-phase-3"> Phase 3 </a>
   ::
   <a href="#earth_americas-whats-next"> Future </a>
-  ::  
-  <a href="#card_index_dividers-some-examples">Examples</a>
   ::
   <a href="#thought_balloon-use-case">Use Case</a>
   ::
   <a href="#page_facing_up-why">Why</a>
   ::
   <a href="#sparkles-contributors">Contributors</a>
-    ::
-  <a href="#email-support">Support</a>
   
 </p>
 
