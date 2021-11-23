@@ -19,11 +19,11 @@ Slash is a web application that scrapes the most popular e-commerce websites to 
 - **Powerful**: Quickly alter the commands to get desired results
 
 <p align="center">
-  <a href="#rocket-installation">Installation</a>
+  <a href="#rocket-getting-started">Getting Started</a>
   ::
   <a href="#golf-flags-and-command-line-arguments">Flags & Args</a>  
   ::  
-  <a href="#card_index_dividers-some-examples">Examples</a>
+  <a href="#card_index_dividers-features">Features</a>
   ::
   <a href="#muscle-whats-new-in-phase-3"> Phase 3 </a>
   ::
@@ -43,31 +43,10 @@ Slash is a web application that scrapes the most popular e-commerce websites to 
 
 ---
 
-:rocket: Installation
+:rocket: Getting Started
 ---
-1. Ensure you have the following installed:
-    * [Python 3](https://www.python.org/downloads/) 
-    * [pip](https://pip.pypa.io/en/stable/installation/)
-    * [git](https://git-scm.com/)
-2. Clone this repo onto your local machine
-    ```
-    git clone https://github.com/SE21-Team2/slash.git
-    cd slash
-    ```
-3. In the repository directory, run
-    ```
-    pip install -r requirements.txt
-    ```
-4. Once all the requirements are installed, you will have to ```cd``` into the ```src``` folder. Once in the ```src``` folder, use the python command to run the ```slash.py``` file.
-    ```
-    cd src
-    
-    For Mac
-    python3 slash.py --search socks
-    
-    For Windows
-    python slash.py --search socks
-    ```
+To get started with Slash, follow the instructions in the [Getting Started Guide](https://github.com/SE21-Team2/slash/blob/main/docs/getting_started.md)
+
 :golf: Flags and Command Line Arguments 
 ---
 Currently the tool supports the following flags and command line arguments. These flags and arguments can be used to quickly filter and guide the search to get you the best results very quickly.
@@ -83,7 +62,7 @@ Currently the tool supports the following flags and command line arguments. Thes
 | --link    |      |         | Show links in the table                                                                      |
 |--currency | str  |         | Display the amount in specified currency(inr, euro, aud, yuan, yen, pound)                   |
  
-:card_index_dividers: Some Examples
+:card_index_dividers: Features
 ---
 
 #### 1. Searching
@@ -379,9 +358,9 @@ File Name: C:\Anant\NCSU\slash_test_csv\socks211104_1223.csv
 
 :muscle: What's New in Phase 3?
 ---
-For a list of specific changes in phase 3, see [Project 3 Changes](https://github.com/SE21-Team2/slash/docs/Project3Changes.md).
+For a list of specific changes in phase 3, see [Project 3 Changes](https://github.com/SE21-Team2/slash/blob/main/docs/Project3Changes.md).
 
-:earth_americas: What's next?
+:earth_americas: Future Scope
 ---
 - Creating ordering and payment functionality for customers to directly order from command line
 - Scrape more e-commerce websites for wider range of options 
