@@ -57,7 +57,7 @@ def wishlistAdd():
 '''
     request body: {"user": <username>, "item":<item info>}
 '''
-@wishlist_bp.route('/wishlistRemove/', methods=['POST'])
+@wishlist_bp.route('/wishlistRemove/', methods=['DELETE'])
 def wishlistRemove():
     user = request.form['user']
     item = request.form['item']
@@ -65,6 +65,19 @@ def wishlistRemove():
     db.query(
             'DELETE FROM wishlist WHERE username = \'%s\' AND name = %s AND price = %s AND website = %s AND link = %s AND rating = %s',
             (user, item['name'], item['price'], item['website'], item['link'], item['rating'])
+    )
+
+    return ('', 204) # no content
+
+'''
+    request body: {"user": <username>}
+'''
+@wishlist_bp.route('/wishlistClear/', methods=['DELETE'])
+def wishlistClear():
+    user = request.form['user']
+
+    db.query(
+            f'DELETE FROM wishlist WHERE username = \'{user}\'',
     )
 
     return ('', 204) # no content
