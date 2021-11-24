@@ -14,7 +14,7 @@ class full_version:
 			os.path.dirname(
 				os.path.dirname(
 					os.path.abspath(__file__))),
-			"json", 
+			"json",
 			"user_data.json"
 			)
 		self.user_list = os.path.join(
@@ -54,7 +54,7 @@ class full_version:
 		return self.name, self.email
 
 	def search_fn(self):
-		''' Functino searches for a given product and returns full list of products scraped. 
+		''' Function searches for a given product and returns full list of products scraped.
 		It then gives the user and option to save an item or open an item in browser'''
 		prod=input("Enter name of product to Search: ")
 		self.scrape(prod)
@@ -74,7 +74,6 @@ class full_version:
 			indx=int(input("Enter row number of product to open: "))
 			webbrowser.open_new(self.df.link[indx])
 
-		pass
 
 	def extract_list(self):
 		'''This function helps user extract saved products and modify list or open product in browser'''
@@ -124,7 +123,7 @@ class full_version:
 			elif choice==2:
 				self.extract_list()
 			elif choice==3:
-				self.currency=lower(input("Enter INR/EUR\n"))
+				self.currency=input("Enter INR/EUR\n").lower()
 			elif choice ==4:
 				print("Thank You for Using Slash")
 				flag_loop = 0
