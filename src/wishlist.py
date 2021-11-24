@@ -6,6 +6,9 @@ from flask import Blueprint
 from flask import jsonify # for return
 from flask import request # for url parameter and password
 
+import db
+import json
+
 wishlist_bp = Blueprint('wishlist', __name__)
 
 '''
@@ -16,38 +19,21 @@ wishlist_bp = Blueprint('wishlist', __name__)
 @wishlist_bp.route('/wishlist/', methods=['GET'])
 def wishlist():
     user = request.form["user"]
-    '''
+
     items = db.query(
-        'SELECT name, price, website, link, rating FROM wishlist WHERE username = %s',
-        (user)
+        f'SELECT name, price, website, link, rating FROM wishlist WHERE username = \'{user}\''
     )
 
+    dictionary_items = []
+    # doesnt work - returns list as it was, not dictionary
     for item in items:
-        item = { "name":item[0], "price":price, "website":website, "link":link, "rating":rating }
+        dictionary_items.append( { "name":item[0], "price":item[1], "website":item[2], "link":item[3], "rating":item[4] } )
     
-    # how does jsonify look with db return, this is single item
-    return jsonify(items)
-    '''
+    if len(items) == 0:
+        return ('', 204) # no content
 
-    # return a default JSON message
-    return jsonify(
-        [
-            {
-            "name":"test_name",
-            "price":"$0.00",
-            "website":"Google",
-            "link":"www.google.com",
-            "rating":5
-            },
-            {
-            "name":"test_name2",
-            "price":"$0.00",
-            "website":"Amazon",
-            "link":"www.amazon.com",
-            "rating":5
-            }
-        ]
-    )
+    # how does jsonify look with db return, this is single item
+    return jsonify(dictionary_items)
 
 '''
     request body: {"user": <username>, "item":<item info>}
@@ -57,12 +43,14 @@ def wishlistAdd():
     user = request.form['user']
     item = request.form['item']
 
-    '''
+    item = json.loads(item)
+
+    print(item)
+
     db.query(
             'INSERT INTO wishlist (username, name, price, website, link, rating) VALUES(%s, %s, %s, %s, %s, %s)',
-            (user, item[0], item[1], item[2], item[3], item[4], item[5])
+            (user, item['name'], item['price'], item['website'], item['link'], item['rating'])
     )
-    '''
 
     return ('', 204) # no content
 
@@ -74,11 +62,9 @@ def wishlistRemove():
     user = request.form['user']
     item = request.form['item']
 
-    '''
     db.query(
-            'DELETE FROM wishlist WHERE username = %s AND name = %s AND price = %s AND website = %s AND link = %s AND rating = %s',
-            (user, item[0], item[1], item[2], item[3], item[4], item[5])
+            'DELETE FROM wishlist WHERE username = \'%s\' AND name = %s AND price = %s AND website = %s AND link = %s AND rating = %s',
+            (user, item['name'], item['price'], item['website'], item['link'], item['rating'])
     )
-    '''
 
     return ('', 204) # no content

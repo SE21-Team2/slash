@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask import jsonify # for return
 from flask import request # for url parameter and password
 import hashlib
-#import db
+import db
 
 user_bp = Blueprint('user', __name__)
 
@@ -11,24 +11,20 @@ user_bp = Blueprint('user', __name__)
 
     return: {"valid": true/false}
 '''
-@user_bp.route('/login/', methods=['GET', 'POST'])
+@user_bp.route('/login/', methods=['POST'])
 def login():
     username = request.form['username']
-    password = hashlib.md5(request.form['password'].encode())
+    password = hashlib.md5(request.form['password'].encode()).hexdigest()
 
-    '''
     user = db.query(
-        'SELECT COUNT(*) FROM users WHERE username = %s AND password = %s',
+        'SELECT COUNT(*) FROM user_data WHERE username = %s AND password = %s',
         (username, password)
-    )
+    )[0][0]
 
     if user == 0:
         return jsonify({"valid":False})
     
     return jsonify({"valid":True})
-    '''
-
-    return jsonify({'username':username, 'password':password.hexdigest()})
 
 '''
     request body: {"username": ..., "password": ...}
@@ -38,19 +34,18 @@ def login():
 @user_bp.route('/signup/', methods=['POST'])
 def signup():
     username = request.form['username']
-    password = hashlib.md5(request.form['password'].encode())
+    password = hashlib.md5(request.form['password'].encode()).hexdigest()
 
-    '''
     # see if it exists
     user = db.query(
-        'SELECT COUNT(*) FROM users WHERE username = %s AND password = %s',
+        'SELECT COUNT(*) FROM user_data WHERE username = %s AND password = %s',
         (username, password)
-    )
+    )[0][0]
 
     if user == 0:
         # if not, create it (signup)
         db.query(
-            'INSERT INTO users (username, password) VALUES(%s, %s)',
+            'INSERT INTO user_data(username, password) VALUES(%s, %s)',
             (username, password)
         )
 
@@ -59,6 +54,3 @@ def signup():
     
     # return true, showing it existed already
     return jsonify({"valid":True})
-    '''
-
-    return jsonify({'username':username, 'password':password.hexdigest()})
