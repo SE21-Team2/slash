@@ -1,7 +1,7 @@
+import hashlib
 from flask import Blueprint
 from flask import jsonify # for return
 from flask import request # for url parameter and password
-import hashlib
 import db
 
 user_bp = Blueprint('user', __name__)
@@ -24,7 +24,7 @@ def login():
 
     if user == 0:
         return jsonify({"valid":False})
-    
+
     return jsonify({"valid":True})
 
 '''
@@ -52,12 +52,12 @@ def signup():
 
         # return true, showing it didnt exist and was created
         return jsonify({"valid":True})
-    
+
     # return false, showing it existed already
     return jsonify({"valid":False})
 
 
-    '''
+'''
     request body: {"username": ..., "password": ...}
 
     return: {"valid": true/false}
@@ -76,7 +76,7 @@ def delete():
     if user == 0:
         # return false, showing it didnt exist and was created
         return jsonify({"valid":False})
-    
+
     # valid, then delete
     db.query(
         f'DELETE FROM user_data WHERE username = \'{username}\''

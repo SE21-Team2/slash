@@ -1,13 +1,10 @@
-'''
-"item info" schema: { "name": ..., "price": ..., "website": ... (amazon, etsy, etc), "link": (url), "rating": ... }
-'''
+import json
 
 from flask import Blueprint
 from flask import jsonify # for return
 from flask import request # for url parameter and password
 
 import db
-import json
 
 wishlist_bp = Blueprint('wishlist', __name__)
 
@@ -27,8 +24,9 @@ def wishlist():
     dictionary_items = []
     # doesnt work - returns list as it was, not dictionary
     for item in items:
-        dictionary_items.append( { "name":item[0], "price":item[1], "website":item[2], "link":item[3], "rating":item[4] } )
-    
+        dictionary_items.append({ "name":item[0], "price":item[1], "website":item[2],
+                                  "link":item[3], "rating":item[4] } )
+
     if len(items) == 0:
         return ('', 204) # no content
 
@@ -63,7 +61,8 @@ def wishlistRemove():
     item = request.form['item']
 
     db.query(
-            'DELETE FROM wishlist WHERE username = \'%s\' AND name = %s AND price = %s AND website = %s AND link = %s AND rating = %s',
+            'DELETE FROM wishlist WHERE username = \'%s\' AND name = %s AND price = %s AND'
+            'website = %s AND link = %s AND rating = %s',
             (user, item['name'], item['price'], item['website'], item['link'], item['rating'])
     )
 

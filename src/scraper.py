@@ -9,8 +9,6 @@ The scraper module holds functions that actually scrape the e-commerce websites
 """
 
 import re
-import os
-from datetime import datetime
 from bs4 import BeautifulSoup
 import requests
 import result_formatter
@@ -119,5 +117,5 @@ def driver(product, currency, num=None, csv=False, cd=None):
 
     if currency in ("", None):
         result_condensed = result_condensed.drop(columns='converted price')
-    
+
     return result_condensed
