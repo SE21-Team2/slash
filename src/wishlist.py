@@ -8,11 +8,11 @@ import db
 
 wishlist_bp = Blueprint('wishlist', __name__)
 
-'''
-    request body: {"user": <username>}
+# '''
+#     request body: {"user": <username>}
 
-    return: list of items on wishlist in <item info> schema
-'''
+#     return: list of items on wishlist in <item info> schema
+# '''
 @wishlist_bp.route('/wishlist/', methods=['GET'])
 def wishlist():
     user = request.form["user"]
@@ -33,9 +33,9 @@ def wishlist():
     # how does jsonify look with db return, this is single item
     return jsonify(dictionary_items)
 
-'''
-    request body: {"user": <username>, "item":<item info>}
-'''
+# '''
+#     request body: {"user": <username>, "item":<item info>}
+# '''
 @wishlist_bp.route('/wishlistAdd/', methods=['POST'])
 def wishlistAdd():
     user = request.form['user']
@@ -52,9 +52,9 @@ def wishlistAdd():
 
     return ('', 204) # no content
 
-'''
-    request body: {"user": <username>, "item":<item info>}
-'''
+# '''
+#     request body: {"user": <username>, "item":<item info>}
+# '''
 @wishlist_bp.route('/wishlistRemove/', methods=['DELETE'])
 def wishlistRemove():
     user = request.form['user']
@@ -68,9 +68,9 @@ def wishlistRemove():
 
     return ('', 204) # no content
 
-'''
-    request body: {"user": <username>}
-'''
+# '''
+#     request body: {"user": <username>}
+# '''
 @wishlist_bp.route('/wishlistClear/', methods=['DELETE'])
 def wishlistClear():
     user = request.form['user']

@@ -116,6 +116,7 @@ def driver(product, currency, num=None, csv=False, cd=None):
     result_condensed = products_1[:num] + products_2[:num] + products_3[:num]
 
     if currency in ("", None):
-        result_condensed = result_condensed.drop(columns='converted price')
+        for res in result_condensed:
+            del res["converted price"]
 
     return result_condensed

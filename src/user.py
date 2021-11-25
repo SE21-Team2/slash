@@ -7,11 +7,11 @@ import db
 user_bp = Blueprint('user', __name__)
 
 # shouldnt this be a get only?
-'''
-    request body: {"username": ..., "password": ...}
+# '''
+#     request body: {"username": ..., "password": ...}
 
-    return: {"valid": true/false}
-'''
+#     return: {"valid": true/false}
+# '''
 @user_bp.route('/login/', methods=['GET'])
 def login():
     username = request.form['username']
@@ -27,11 +27,11 @@ def login():
 
     return jsonify({"valid":True})
 
-'''
-    request body: {"username": ..., "password": ...}
+# '''
+#     request body: {"username": ..., "password": ...}
 
-    return: {"valid": true/false}
-'''
+#     return: {"valid": true/false}
+# '''
 @user_bp.route('/signup/', methods=['POST'])
 def signup():
     username = request.form['username']
@@ -57,11 +57,11 @@ def signup():
     return jsonify({"valid":False})
 
 
-'''
-    request body: {"username": ..., "password": ...}
+# '''
+#     request body: {"username": ..., "password": ...}
 
-    return: {"valid": true/false}
-'''
+#     return: {"valid": true/false}
+# '''
 @user_bp.route('/deleteuser/', methods=['DELETE'])
 def delete():
     username = request.form['username']

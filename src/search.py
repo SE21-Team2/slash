@@ -25,8 +25,8 @@ def search():
                              int(request.args.get('num_products')))
 
     # if not descending, it is ascending
-    results = result_formatter.sortList(results, request.args.get('sortby'), True if
-                                        request.args.get('displayOrder').lower() == 'desc' else False)
+    results = result_formatter.sortList(results, request.args.get('sortby'),
+        request.args.get('displayOrder').lower() == 'desc')
 
     return jsonify(results)
     
