@@ -24,6 +24,11 @@ jobs:
     - name: Lint with pylint
       run: |
         pylint src
+    - name: Create env file
+      run: |
+        cat << EOF > .env
+        DATABASE_URL=${{ secrets.DATABASE_URL }}
+        EOF
     - name: Test with pytest
       run: |
         export PYTHONPATH=src
