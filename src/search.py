@@ -12,21 +12,23 @@ import scraper
 search_bp = Blueprint('search', __name__)
 
 '''
-    num_products: number of products to get
-    sortby: 'Relevance' or 'Price'
-    displayOrder: 'asc' or 'desc'
-    currency: currency format
+    Gets details of items from e-commerce websites specified by the query parameters.
+    request body: 
+        name: search product string
+        numProducts: number of products to get
+        sortBy: 'Relevance' or 'Price'
+        displayOrder: 'asc' or 'desc'
+        currency: currency format
 
     return: list of items on wishlist in <item info> schema
 '''
 @search_bp.route('/search/', methods=['GET'])
 def search():
     results = scraper.driver(request.args.get('name'), request.args.get('currency'),
-                             int(request.args.get('num_products')))
+                             int(request.args.get('numProducts')))
 
     # if not descending, it is ascending
-    results = result_formatter.sortList(results, request.args.get('sortby'),
+    results = result_formatter.sortList(results, request.args.get('sortBy'),
         request.args.get('displayOrder').lower() == 'desc')
 
     return jsonify(results)
-    
