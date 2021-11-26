@@ -28,10 +28,10 @@ jobs:
       run: |
         cat << EOF > .env
         DATABASE_URL=${{ secrets.DATABASE_URL }}
+        PYTHONPATH=src
         EOF
     - name: Test with pytest
       run: |
-        export PYTHONPATH=src
         pytest
     - name: Generate coverage
       run: |
