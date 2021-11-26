@@ -170,7 +170,9 @@ disable=print-statement,
         C0413,
         R0801,
         R0201,
-		R0913 # Too many arguments (7/5) (too-many-arguments)
+        R0913, # Too many arguments (7/5) (too-many-arguments)
+        R1719,
+        W0703
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option

@@ -9,9 +9,6 @@ The scraper module holds functions that actually scrape the e-commerce websites
 """
 
 import re
-import os
-from datetime import datetime
-import pandas as pd
 from bs4 import BeautifulSoup
 import requests
 import result_formatter
@@ -115,16 +112,11 @@ def driver(product, currency, num=None, csv=False, cd=None):
     products_1 = searchAmazon(product, currency)
     products_2 = searchWalmart(product, currency)
     products_3 = searchEtsy(product, currency)
-    results = products_1 + products_2 + products_3
+
     result_condensed = products_1[:num] + products_2[:num] + products_3[:num]
-    result_condensed = pd.DataFrame.from_dict(result_condensed, orient='columns')
-    results = pd.DataFrame.from_dict(results, orient='columns')
+
     if currency in ("", None):
-        results = results.drop(columns='converted price')
-        result_condensed = result_condensed.drop(columns='converted price')
-    if csv:
-        file_name = os.path.join(cd, (product + datetime.now().strftime("%y%m%d_%H%M") + ".csv"))
-        print("CSV Saved at: ", cd)
-        print("File Name:", file_name)
-        results.to_csv(file_name, index=False, header=results.columns)
+        for res in result_condensed:
+            del res["converted price"]
+
     return result_condensed
