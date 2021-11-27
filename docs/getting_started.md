@@ -17,22 +17,25 @@ To set up and run Slash:
    1. [Create a Heroku account](https://signup.heroku.com/login).
    2. Sign in to Heroku and create a new Heroku application.
    3. Add the Heroku Postgres extension (in the `Resources` tab of the Heroku application web UI).
-   4. Acquire the PostgreSQL database connection URL (In the web UI inside the Heroku app, navigate to `Resources > Heroku Postgres > Settings > View Credentials...` and note the URI). Copy this URI into the `.env` file; your `.env` file should now look like this: **TODO: Update to setting env variable**
+   4. Acquire the PostgreSQL database connection URL (In the web UI inside the Heroku app, navigate to `Resources > Heroku Postgres > Settings > View Credentials...` and note the URI). Copy this URI into the `.env` file; your `.env` file should look like this: 
       ```
       # .env
-      DISCORD_TOKEN={your-bot-token}
       DATABASE_URL={your-database-url}
       ```
-5. To start the Slash command-line tool **TODO: Update to starting app**
+5. To start the Slash web app locally, in the root directory, run
     ```
-    cd src
-    
-    For Mac
-    python3 slash.py --search socks
-    
-    For Windows
-    python slash.py --search socks
+    python src/endpoints.py
     ```
+   Open another terminal and run
+    ```
+    cd frontend
+    npm install
+    ```
+   When the packages have completed installing, run
+    ```
+    npm start
+    ```
+   A browser should open showing the web app.
 
 ## Running the app through Heroku
 

@@ -1,8 +1,4 @@
-## **slash.py**
-### *def main()*: 
-Provides help for every argument
-
-## **scaper.py**
+## scraper.py
 ### *def httpsGet(URL)*: 
 The httpsGet function makes HTTP called to the requested URL with custom headers
 
@@ -36,7 +32,7 @@ Returns a list of items available on Etsy.com that match the product entered by 
 ### *def driver(product, currency, num=None, csv=False,cd=None)*:
 Returns csv if the user enters the --csv arg, else will display the result table in the terminal based on the args entered by the user.
 
-## **formatter.py**
+## result_formatter.py
 ### *def formatResult(website, titles, prices, links, ratings, currency)*:
 The formatResult function takes the scraped HTML as input, and extracts the necessary values from the HTML code. Ex. extracting a price '$19.99' from a paragraph tag.\
 **Parameters**: \
@@ -48,7 +44,7 @@ ratings-scraped ratings of the product
 Returns a dictionary of all the parameters stated above for the product.
 
 ### *def sortList(arr, sortBy, reverse)*:
-It sorts the products list based on the flags provided as arguements. Currently, it supports sorting by price.\
+It sorts the products list based on the flags provided as arguments. Currently, it supports sorting by price.\
 **Parameters-**\
 SortBy- "pr": sorts by price, SortBy- "ra": sorts by rating
 
@@ -65,15 +61,6 @@ Ex. it extracts 10.99 from '$10.99' or 'starting at $10.99'
 The getCurrency function converts the prices listed in USD to user specified currency. \
 Currently it supports INR, EURO, AUD, YUAN, YEN, POUND.
 
-## full_version.py 
-
-### *def login(self)*:
-Used for User Login\
-Returns the username and email
-
-### *def scrape(self,prod)*:
-calls the scraper function from scraper.py
-
 ## csv_writer.py
 ### *def write_csv(arr,product,file_path)*:
 Returns the CSV file with the naming nomenclature as 'ProductDate_Time'\
@@ -83,15 +70,8 @@ file_path: path where the csv needs to be stored\
 **Returns**-\
 file_name: CSV file
 
+## endpoints.py
+Functions for starting Python Flask app.
 
-
-
-
-
-
-
-
-
-
-
-
+### REST API Endpoints
+**Please see [REST API Descriptions](https://github.com/SE21-Team2/slash/blob/main/docs/restapi_descriptions.md) for descriptions of the files *search.py*, *user.py*, and *wishlist.py*.**
