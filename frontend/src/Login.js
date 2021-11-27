@@ -32,7 +32,7 @@ function Login({ onSetUserLoggedIn }) {
 
     return (
         <React.Fragment>
-            {invalidLogin && <p style={{ color: "red" }}>Invalid login credentials</p>}
+            {invalidLogin && <p style={{ color: "#800" }}>Invalid login credentials</p>}
             <h2>Log In</h2>
             <form onSubmit={handleLogin}>
                 <h4>Username</h4>

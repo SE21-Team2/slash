@@ -12,10 +12,10 @@ user_bp = Blueprint('user', __name__)
 
     return: {"valid": true/false}
 '''
-@user_bp.route('/login/', methods=['GET'])
+@user_bp.route('/login/', methods=['POST'])
 def login():
-    username = request.form['username']
-    password = hashlib.md5(request.form['password'].encode()).hexdigest()
+    username = request.json['username']
+    password = hashlib.md5(request.json['password'].encode()).hexdigest()
 
     user = db.query(
         'SELECT COUNT(*) FROM user_data WHERE username = %s AND password = %s',
@@ -36,8 +36,8 @@ def login():
 '''
 @user_bp.route('/signup/', methods=['POST'])
 def signup():
-    username = request.form['username']
-    password = hashlib.md5(request.form['password'].encode()).hexdigest()
+    username = request.json['username']
+    password = hashlib.md5(request.json['password'].encode()).hexdigest()
 
     # see if it exists
     user = db.query(
@@ -66,8 +66,8 @@ def signup():
 '''
 @user_bp.route('/deleteuser/', methods=['DELETE'])
 def delete():
-    username = request.form['username']
-    password = hashlib.md5(request.form['password'].encode()).hexdigest()
+    username = request.json['username']
+    password = hashlib.md5(request.json['password'].encode()).hexdigest()
 
     # see if it exists
     user = db.query(

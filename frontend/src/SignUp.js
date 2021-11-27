@@ -21,7 +21,7 @@ function SignUp() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
-        });
+        }).then(res => res.json());
 
         if (valid) {
             navigate("/login");
@@ -32,7 +32,7 @@ function SignUp() {
 
     return (
         <React.Fragment>
-            {invalidSignUp && <p style={{ color: "red" }}>A user with this user name already exists</p>}
+            {invalidSignUp && <p style={{ color: "#800" }}>A user with this user name already exists</p>}
             <h2>Sign Up</h2>
             <form onSubmit={handleSignUp}>
                 <h4>Username</h4>

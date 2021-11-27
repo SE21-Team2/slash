@@ -17,14 +17,14 @@ main {
     font-size: 80px;
     font-family: 'Bebas Neue', cursive;
     text-align: center;
-    margin-left: 300px;
+    margin-left: 500px;
 }
 
 #top-right-links {
     float: right;
     display: flex;
     justify-content: right;
-    width: 300px;
+    width: 500px;
     font-size: 20px;
 }
 

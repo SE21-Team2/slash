@@ -16,7 +16,7 @@ wishlist_bp = Blueprint('wishlist', __name__)
 '''
 @wishlist_bp.route('/wishlist/', methods=['GET'])
 def wishlist():
-    user = request.form["user"]
+    user = request.args["user"]
 
     items = db.query(
         f'SELECT name, price, website, link, rating FROM wishlist WHERE username = \'{user}\''
@@ -25,8 +25,10 @@ def wishlist():
     dictionary_items = []
     # loop through db query items to append to dictionary to return
     for item in items:
-        dictionary_items.append({"name": item[0], "price": item[1], "website": item[2],
+        dictionary_items.append({"title": item[0], "price": item[1], "website": item[2],
                                  "link": item[3], "rating": item[4]})
+
+    # TODO altered column type of rating and price to real; should we change?
 
     return jsonify(dictionary_items)
 
@@ -37,16 +39,14 @@ def wishlist():
 '''
 @wishlist_bp.route('/wishlistAdd/', methods=['POST'])
 def wishlistAdd():
-    user = request.form['user']
-    item = request.form['item']
+    user = request.json['user']
+    item = request.json['item']
 
-    item = json.loads(item)
-
-    print(item)
+    # TODO convert price to generic currency and fix price hack used below
 
     db.query(
         'INSERT INTO wishlist (username, name, price, website, link, rating) VALUES(%s, %s, %s, %s, %s, %s)',
-        (user, item['name'], item['price'], item['website'], item['link'], item['rating'])
+        (user, item['title'], float(item['price'][1:]), item['website'], item['link'], item['rating'])
     )
 
     return '', 200  # OK
@@ -55,15 +55,14 @@ def wishlistAdd():
 # '''
 #     request body: {"user": <username>, "item":<item info>}
 # '''
-@wishlist_bp.route('/wishlistRemove/', methods=['DELETE'])
+@wishlist_bp.route('/wishlistRemove/', methods=['POST'])
 def wishlistRemove():
-    user = request.form['user']
-    item = request.form['item']
+    user = request.json['user']
+    item = request.json['item']
 
     db.query(
-        'DELETE FROM wishlist WHERE username = \'%s\' AND name = %s AND price = %s AND'
-        'website = %s AND link = %s AND rating = %s',
-        (user, item['name'], item['price'], item['website'], item['link'], item['rating'])
+        'DELETE FROM wishlist WHERE username = %s AND link = %s',
+        (user, item['link'])
     )
 
     return '', 200  # OK
@@ -74,7 +73,7 @@ def wishlistRemove():
 # '''
 @wishlist_bp.route('/wishlistClear/', methods=['DELETE'])
 def wishlistClear():
-    user = request.form['user']
+    user = request.json['user']
 
     db.query(
         f'DELETE FROM wishlist WHERE username = \'{user}\'',

@@ -35,8 +35,8 @@ function App() {
                 {userLoggedIn
                     ? (
                         <React.Fragment>
-                            <Link to="#" onClick={() => setUserLoggedIn(null)}>Log Out</Link>
                             <Link to="/wishlist">View Wishlist</Link>
+                            <Link to="#" onClick={() => setUserLoggedIn(null)}>Log Out</Link>
                         </React.Fragment>
                     )
                     : <Link to="/login">Log In</Link>

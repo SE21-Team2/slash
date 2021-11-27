@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 function Items({ items, userLoggedIn }) {
     const [wishlist, setWishlist] = useState();
 
-    async function loadWishList() {
-        const wl = await fetch('/wishlist', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user: userLoggedIn })
-        }).then(res => res.json());
-        setWishlist(wl);
+    function loadWishList() {
+        if (userLoggedIn) {
+            fetch(`/wishlist?user=${userLoggedIn}`)
+                .then(res => res.json())
+                .then(setWishlist);
+        }
     }
 
     useEffect(() => {
@@ -23,7 +22,7 @@ function Items({ items, userLoggedIn }) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user: userLoggedIn, item })
         });
-        await loadWishList()
+        loadWishList();
     }
 
     async function handleRemoveFromWishlist(item) {
@@ -32,41 +31,45 @@ function Items({ items, userLoggedIn }) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user: userLoggedIn, item })
         });
-        await loadWishList();
+        loadWishList();
     }
+
+    console.log(wishlist);
 
     return (
         <table className="item-table">
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Website</th>
-                <th>Link</th>
-                <th>Rating</th>
-            </tr>
-            {items.map(item =>
-                <Item
-                    key={item.link}
-                    item={item}
-                    wishlist={userLoggedIn && wishlist}
-                    onAddToWishlist={handleAddToWishlist}
-                    onRemoveFromWishlist={handleRemoveFromWishlist}
-                />
-            )}
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Source</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                {items.map(item =>
+                    <Item
+                        key={item.link}
+                        item={item}
+                        wishlist={userLoggedIn && wishlist}
+                        onAddToWishlist={handleAddToWishlist}
+                        onRemoveFromWishlist={handleRemoveFromWishlist}
+                    />
+                )}
+            </tbody>
         </table>
     );
 }
 
 const Item = ({ item, wishlist, onAddToWishlist, onRemoveFromWishlist }) => (
     <tr>
-        <td className="name-td">{item.name}</td>
+        <td className="name-td"><a href={item.link}>{item.title}</a></td>
         <td>{item.price}</td>
         <td>{item.website}</td>
-        <td className="link-td"><a href={item.link}>{item.link}</a></td>
         <td>{item.rating}</td>
         {wishlist && 
             <td>
-                {wishlist.any(wlItem => wlItem.link === item.link)
+                {wishlist.some(wlItem => wlItem.link === item.link)
                     ? <button onClick={() => onRemoveFromWishlist(item)}>Remove from wish list</button>
                     : <button onClick={() => onAddToWishlist(item)}>Add to wish list</button>
                 }
