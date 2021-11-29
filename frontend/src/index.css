@@ -71,3 +71,11 @@ hr {
 .name-td {
     width: 450px;
 }
+
+.option {
+    margin: 20px;
+}
+
+.option h4 {
+    margin-top: 0;
+}

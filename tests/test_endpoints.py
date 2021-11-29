@@ -1,7 +1,9 @@
 # pylint: skip-file
-
+import sys
+import os
 import pytest
 
+sys.path.append(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'src')))
 import endpoints
 import db
 from flask import json
@@ -33,10 +35,10 @@ def test_user(client) -> None:
     data = json.loads(rv.get_data(as_text=True))
     assert not data['valid']  # is False
 
-    rv = client.get('/login/', json={"username":"abcdefg", "password":"password"})
+    rv = client.post('/login/', json={"username":"abcdefg", "password":"password"})
     data = json.loads(rv.get_data(as_text=True))
     assert data['valid']  # is True
-    rv = client.get('/login/', json={"username":"missing", "password":"password"})
+    rv = client.post('/login/', json={"username":"missing", "password":"password"})
     data = json.loads(rv.get_data(as_text=True))
     assert not data['valid']  # is False
 
@@ -66,13 +68,13 @@ def test_wishlist(client) -> None:
 
     # add one for each
     item = dict(title="socks", price="15.99", website="amazon", link="www.amazon.com/socks", rating=5)
-    rv = client.post('/wishlistAdd/', json={"user":"test_user_1", "item":json.dumps(item)})
+    rv = client.post('/wishlistAdd/', json={"user":"test_user_1", "item":item})
     assert rv.status_code == 200  # OK
     item = dict(title="shoes", price="55.99", website="amazon", link="www.amazon.com/shoes", rating=5)
-    rv = client.post('/wishlistAdd/', json={"user":"test_user_2", "item":json.dumps(item)})
+    rv = client.post('/wishlistAdd/', json={"user":"test_user_2", "item":item})
     assert rv.status_code == 200  # no response
     item = dict(title="shirt", price="25.99", website="amazon", link="www.amazon.com/shirt", rating=5)
-    rv = client.post('/wishlistAdd/', json={"user":"test_user_2", "item":json.dumps(item)})
+    rv = client.post('/wishlistAdd/', json={"user":"test_user_2", "item":item})
     assert rv.status_code == 200  # no response
 
     # get it and verify added items are there
@@ -99,7 +101,7 @@ def test_wishlist(client) -> None:
 
     item = dict(title="socks", price="15.99", website="amazon", link="www.amazon.com/socks", rating="5")
     rv = client.delete('/wishlistRemove/',
-                       json={"user":"test_user_1", "item":json.dumps(item)})
+                       json={"user":"test_user_1", "item":item})
     assert rv.status_code == 200  # OK
     rv = client.delete('/wishlistClear/', json={"user":"test_user_2"})
     assert rv.status_code == 200  # OK

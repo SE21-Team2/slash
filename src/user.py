@@ -12,7 +12,7 @@ user_bp = Blueprint('user', __name__)
 
     return: {"valid": true/false}
 '''
-@user_bp.route('/login/', methods=['GET'])
+@user_bp.route('/login/', methods=['POST'])
 def login():
     data = request.get_json(force=True)
     username = data.get('username')

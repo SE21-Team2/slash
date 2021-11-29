@@ -3,6 +3,7 @@ import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
 import Items from "./Items";
+import CurrencySelect from "./CurrencySelect";
 
 import "./Home.css";
 
@@ -25,21 +26,12 @@ function Home({ userLoggedIn }) {
                 numProducts,
                 sortBy: sortField,
                 displayOrder: displayOrder,
-                currency
+                // currency
             });
             fetch("/search?" + queryParams.toString())
                 .then(res => res.json())
                 .then(setItems);
         }
-
-        // console.log(numProducts);
-        // const items = [
-        //     {name: "An item", price: 13.9, link: 'http://google.com', website: 'amazon', rating: 3.5},
-        //     {name: "An item 2", price: 14.9, link: 'http://google.com', website: 'amazon', rating: 4.2},
-        //     {name: "An item 3", price: 15.9, link: 'http://google.com', website: 'amazon', rating: 5.0},
-        //     {name: "An item 4", price: 10.9, link: 'http://google.com', website: 'amazon', rating: 1.5}
-        // ]
-        // setItems(items);
     }
 
     return (
@@ -63,17 +55,7 @@ function Home({ userLoggedIn }) {
                         </select>
                     </div>
 
-                    <div className="option">
-                        <h4>Currency:</h4>
-                        <select value={currency} onChange={e => setCurrency(e.target.value)}>
-                            <option value="usd">US Dollar</option>
-                            <option value="eu">Euro</option>
-                            <option value="aud">Australian Dollar</option>
-                            <option value="yuan">Yuan</option>
-                            <option value="yen">Yen</option>
-                            <option value="bp">British Pound</option>
-                        </select>
-                    </div>
+                    <CurrencySelect currency={currency} setCurrency={setCurrency} />
                 </div>
 
                 <div id="search">
@@ -85,7 +67,7 @@ function Home({ userLoggedIn }) {
                 </div>
             </form>
             {items && <hr />}
-            {items && <Items items={items} userLoggedIn={userLoggedIn} />}
+            {items && <Items items={items} currency={currency} userLoggedIn={userLoggedIn} />}
         </div>
     );
 }

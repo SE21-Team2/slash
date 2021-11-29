@@ -29,7 +29,7 @@ def httpsGet(URL):
     return BeautifulSoup(soup1.prettify(), "html.parser")
 
 
-def searchAmazon(query, currency):
+def searchAmazon(query):
     """
     The searchAmazon function scrapes amazon.com
     Parameters: query- search query for the product,
@@ -45,12 +45,12 @@ def searchAmazon(query, currency):
         titles, prices, links = res.select("h2 a span"), res.select("span.a-price span"), res.select(
             "h2 a.a-link-normal")
         ratings = res.select("span.a-icon-alt")
-        product = result_formatter.formatResult("amazon", titles, prices, links, ratings, currency)
+        product = result_formatter.formatResult("amazon", titles, prices, links, ratings)
         products.append(product)
     return products
 
 
-def searchWalmart(query, currency):
+def searchWalmart(query):
     """
     The searchWalmart function scrapes walmart.com
     Parameters: query- search query for the product,
@@ -67,12 +67,12 @@ def searchWalmart(query, currency):
     for res in results:
         titles, prices, links = res.select("span.lh-title"), res.select("div.lh-copy"), res.select("a")
         ratings = res.findAll("span", {"class": "w_DJ"}, text=pattern)
-        product = result_formatter.formatResult("walmart", titles, prices, links, ratings, currency)
+        product = result_formatter.formatResult("walmart", titles, prices, links, ratings)
         products.append(product)
     return products
 
 
-def searchEtsy(query, currency):
+def searchEtsy(query):
     """
     The searchEtsy function scrapes Etsy.com
     Parameters: query- search query for the product,
@@ -93,30 +93,25 @@ def searchEtsy(query, currency):
             links = link_str
         titles, prices = (item.select("h3")), (item.select(".currency-value"))
         ratings = item.select('span.screen-reader-only')
-        product = result_formatter.formatResult("Etsy", titles, prices, links, ratings, currency)
+        product = result_formatter.formatResult("Etsy", titles, prices, links, ratings)
         products.append(product)
     return products
 
 
-def driver(product, currency, num=None, csv=False, cd=None):
+def driver(product, num=None, csv=False, cd=None):
     """
     Main driver for the scraper
     Parameters: product- search query for the product,
-                currency- currency type entered by the user,
                 num- number of products to list
                 csv- option to save as csv,
                 cd- directory to store csv file if csv=True
     Returns csv is the user enters the --csv arg,
     else will display the result table in the terminal based on the args entered by the user
     """
-    products_1 = searchAmazon(product, currency)
-    products_2 = searchWalmart(product, currency)
-    products_3 = searchEtsy(product, currency)
+    products_1 = searchAmazon(product)
+    products_2 = searchWalmart(product)
+    products_3 = searchEtsy(product)
 
     result_condensed = products_1[:num] + products_2[:num] + products_3[:num]
-
-    if currency in ("", None):
-        for res in result_condensed:
-            del res["converted price"]
 
     return result_condensed

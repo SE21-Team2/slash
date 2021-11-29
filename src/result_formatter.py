@@ -12,7 +12,7 @@ import math
 from datetime import datetime
 
 
-def formatResult(website, titles, prices, links, ratings, currency):
+def formatResult(website, titles, prices, links, ratings):
     """
     The formatResult function takes the scraped HTML as input, and extracts the
     necessary values from the HTML code. Ex. extracting a price '$19.99' from
@@ -26,28 +26,27 @@ def formatResult(website, titles, prices, links, ratings, currency):
     Returns: A dictionary of all the parameters stated above for the product
     """
 
-    title, price, link, rating, converted_cur = '', '', '', '', ''
+    title, price, link, rating = '', '', '', ''
     if titles:
         title = titles[0].get_text().strip()
     if prices:
-        price = prices[0].get_text().strip()
-    if '$' not in price:
-        price = '$'+price
+        price = ''.join(c for c in prices[0].get_text().strip() if c in '0123456789.')
+    # if '$' not in price:
+    #     price = '$'+price
+    price = price.replace('$', '')
+    price = float('0' if price == '' else price)
     if links:
         link = links[0]['href']
     formatted_link = link if 'https://' in link else f'https://www.{website}.com{link}'
     if ratings:
         rating = float(ratings[0].get_text().strip().split()[0])
-    if currency:
-        converted_cur = getCurrency(currency, price)
     product = {
         'timestamp': datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
         "title": title,
         "price": price,
         "link": formatted_link,
         "website": website,
-        "rating": rating,
-        "converted price": converted_cur
+        "rating": rating
     }
 
     return product
@@ -96,25 +95,25 @@ def getNumbers(st):
     return ans
 
 
-def getCurrency(currency, price):
-    """
-    The getCurrency function converts the prices listed in USD to user specified currency.
-    Currently it supports INR, EURO, AUD, YUAN, YEN, POUND
-    """
+# def getCurrency(currency, price):
+#     """
+#     The getCurrency function converts the prices listed in USD to user specified currency.
+#     Currently it supports INR, EURO, AUD, YUAN, YEN, POUND
+#     """
 
-    converted_cur = 0.0
-    if len(price) > 1:
-        if currency == "inr":
-            converted_cur = 75 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
-        elif currency == "euro":
-            converted_cur = 1.16 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
-        elif currency == "aud":
-            converted_cur = 1.34 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
-        elif currency == "yuan":
-            converted_cur = 6.40 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
-        elif currency == "yen":
-            converted_cur = 114.21 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
-        elif currency == "pound":
-            converted_cur = 0.74 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
-        converted_cur = currency.upper()+' '+str(converted_cur)
-    return converted_cur
+#     converted_cur = 0.0
+#     if len(price) > 1:
+#         if currency == "inr":
+#             converted_cur = 75 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
+#         elif currency == "euro":
+#             converted_cur = 1.16 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
+#         elif currency == "aud":
+#             converted_cur = 1.34 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
+#         elif currency == "yuan":
+#             converted_cur = 6.40 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
+#         elif currency == "yen":
+#             converted_cur = 114.21 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
+#         elif currency == "pound":
+#             converted_cur = 0.74 * int(price[(price.index("$")+1):price.index(".")].replace(",", ""))
+#         converted_cur = currency.upper()+' '+str(converted_cur)
+#     return converted_cur

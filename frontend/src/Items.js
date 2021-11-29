@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-function Items({ items, userLoggedIn }) {
+import { convertPrice } from "./shared";
+
+function Items({ items, currency, userLoggedIn }) {
     const [wishlist, setWishlist] = useState();
 
     function loadWishList() {
@@ -51,6 +53,7 @@ function Items({ items, userLoggedIn }) {
                     <Item
                         key={item.link}
                         item={item}
+                        currency={currency}
                         wishlist={userLoggedIn && wishlist}
                         onAddToWishlist={handleAddToWishlist}
                         onRemoveFromWishlist={handleRemoveFromWishlist}
@@ -61,10 +64,10 @@ function Items({ items, userLoggedIn }) {
     );
 }
 
-const Item = ({ item, wishlist, onAddToWishlist, onRemoveFromWishlist }) => (
+const Item = ({ item, currency, wishlist, onAddToWishlist, onRemoveFromWishlist }) => (
     <tr>
         <td className="name-td"><a href={item.link}>{item.title}</a></td>
-        <td>{item.price}</td>
+        <td>{convertPrice(item.price, currency)}</td>
         <td>{item.website}</td>
         <td>{item.rating}</td>
         {wishlist && 

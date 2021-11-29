@@ -16,8 +16,7 @@ wishlist_bp = Blueprint('wishlist', __name__)
 '''
 @wishlist_bp.route('/wishlist/', methods=['GET'])
 def wishlist():
-    data = request.get_json(force=True)
-    user = data.get('user')
+    user = request.args.get('user')
 
     items = db.query(
         f'SELECT name, price, website, link, rating FROM wishlist WHERE username = \'{user}\''
@@ -42,13 +41,13 @@ def wishlist():
 def wishlistAdd():
     data = request.get_json(force=True)
     user = data.get('user')
-    item = json.loads(data.get('item'))
+    item = data.get('item')
 
     # TODO convert price to generic currency and fix price hack used below
 
     db.query(
         'INSERT INTO wishlist (username, name, price, website, link, rating) VALUES(%s, %s, %s, %s, %s, %s)',
-        (user, item['title'], float(item['price']), item['website'], item['link'], item['rating'])
+        (user, item['title'], item['price'], item['website'], item['link'], item['rating'])
     )
 
     return '', 200  # OK
@@ -61,7 +60,7 @@ def wishlistAdd():
 def wishlistRemove():
     data = request.get_json(force=True)
     user = data.get('user')
-    item = json.loads(data.get('item'))
+    item = data.get('item')
 
     db.query(
         'DELETE FROM wishlist WHERE username = %s AND link = %s',
