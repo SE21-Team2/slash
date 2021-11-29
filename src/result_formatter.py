@@ -58,10 +58,19 @@ def sortList(arr, sort_by, reverse):
         Parameters- SortBy- "pr": sorts by price, "ra": sorts by rating
         Returns- Sorted list of the products based on the parameter requested by the user
     """
-    if sort_by == "pr":
-        return sorted(arr, key=lambda x: x["price"], reverse=reverse)
-    if sort_by == "ra":
-        return sorted(arr, key=lambda x: x["rating"], reverse=reverse)
+    if sort_by == "price":
+        missing_price_list = list(filter(lambda x: x["price"] == "", arr))
+        arr = list(filter(lambda x: x["price"] != "", arr))
+        arr = sorted(arr, key=lambda x: x["price"], reverse=reverse)
+        arr.extend(missing_price_list)
+        return arr
+    if sort_by == "rating":
+        missing_rating_list = list(filter(lambda x: x["rating"] == "", arr))
+        arr = list(filter(lambda x: x["rating"] != "", arr))
+        arr = sorted(arr, key=lambda x: x["rating"], reverse=reverse)
+        arr.extend(missing_rating_list)
+        return arr
+
     return arr
 
 
