@@ -2,10 +2,13 @@
 See [project 2 documentation](#project-2-documentation) for previous command-line functionalities.
 
 ### Web App
-The project was previously a command-line tool which made it less convenient to use and less accessible to the average user who may not have experience with command-line operations. To improve this, we have created a web app that wraps around the original tool and provided a better User Interface. 
+The project was previously a command-line tool which made it less convenient to use and less accessible to the average user who may not have experience with command-line operations. To improve this, we have created a web app that wraps around the original tool and provided a better User Interface. The frontend UI includes a search bar, inputs for the number of results, currency, and sort by options, and a table to show the list of results. In the table, users can directly click on the item name to go to the product web page and add the item to their wishlist.
 
 ### REST API
-Along with the web app, we have created REST API endpoints so that the tool can be more extendable and accessible. Future contributors can create their own interface such as a browser extension to interact with the tool. 
+Along with the web app, we have created REST API endpoints so that the tool can be more extendable and accessible. Future contributors can create their own interface such as a browser extension to interact with the tool. See the [REST API Descriptions](https://github.com/SE21-Team2/slash/blob/main/docs/restapi_descriptions.md) document for more details.
+
+### Enhanced Profile Creation and Wishlist
+Version 2 of Slash included the `Full Version` that allowed users to log in with their email address and create a wishlist. In project 3, we created a more sophisticated log in and authentication system with username and password and required users to register for a profile before logging in. The frontend UI also made it easier for users to view, add, remove items from their wishlist. This is implemented with connection to the database as described later in this document. 
 
 ### Sorting Logic Updates
 Previously, it is possible for users to specify the number of items to return. The tool would return that number of items for _each_ website and we thought that this would be confusing to the user. Instead, we decided to just return the specified number of items in the overall search. For the default search, it would attempt to return a fraction of the specified number for each website for a total of the given number. For the sorted searches, it would retrieve the specified number of items for each website and then sort the values. It would then only return the top values of the sorted list.
