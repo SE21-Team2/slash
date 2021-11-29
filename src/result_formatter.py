@@ -58,6 +58,10 @@ def sortList(arr, sort_by, reverse):
         Parameters- SortBy- "pr": sorts by price, "ra": sorts by rating
         Returns- Sorted list of the products based on the parameter requested by the user
     """
+
+    # remove empty items
+    arr = list(filter(lambda x: x["title"] != "", arr))
+
     if sort_by == "price":
         missing_price_list = list(filter(lambda x: x["price"] == "", arr))
         arr = list(filter(lambda x: x["price"] != "", arr))

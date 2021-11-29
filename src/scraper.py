@@ -61,12 +61,12 @@ def searchWalmart(query):
     URL = f'https://www.walmart.com/search?q={query}'
     page = httpsGet(URL)
     results = page.findAll("div", {"data-item-id": True})
-    # print(results)
     products = []
     pattern = re.compile(r'out of 5 Stars')
+    #print(results)
     for res in results:
         titles, prices, links = res.select("span.lh-title"), res.select("div.lh-copy"), res.select("a")
-        ratings = res.findAll("span", {"class": "w_DJ"}, text=pattern)
+        ratings = res.findAll("span", {"class": "w_DE"}, text=pattern)
         product = result_formatter.formatResult("walmart", titles, prices, links, ratings)
         products.append(product)
     return products
