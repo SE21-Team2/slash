@@ -24,7 +24,7 @@ search_bp = Blueprint('search', __name__)
 '''
 @search_bp.route('/search/', methods=['GET'])
 def search():
-    results = scraper.driver(request.args.get('name'), int(request.args.get('numProducts')))
+    results = scraper.driver(request.args.get('name'), request.args.get('numProducts', type=int))
 
     # if not descending, it is ascending
     results = result_formatter.sortList(results, request.args.get('sortBy'),

@@ -59,9 +59,9 @@ def sortList(arr, sort_by, reverse):
         Returns- Sorted list of the products based on the parameter requested by the user
     """
     if sort_by == "pr":
-        return sorted(arr, key=lambda x: getNumbers(x["price"]), reverse=reverse)
+        return sorted(arr, key=lambda x: x["price"], reverse=reverse)
     if sort_by == "ra":
-        return sorted(arr, key=lambda x: getNumbers(x["rating"]), reverse=reverse)
+        return sorted(arr, key=lambda x: x["rating"], reverse=reverse)
     return arr
 
 
