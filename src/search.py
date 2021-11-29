@@ -29,6 +29,6 @@ def search():
 
     # if not descending, it is ascending
     results = result_formatter.sortList(results, request.args.get('sortBy'),
-        True if request.args.get('displayOrder').lower() == 'desc' else False )
+        request.args.get('displayOrder').lower() == 'desc')
 
     return jsonify(results)
