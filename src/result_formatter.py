@@ -60,7 +60,7 @@ def sortList(arr, sort_by, reverse):
     """
 
     # remove empty items
-    arr = list(filter(lambda x: x["title"] != "", arr))
+    arr = list(filter(lambda x: x["title"] != "" and x["price"] > 0, arr))
 
     if sort_by == "price":
         missing_price_list = list(filter(lambda x: x["price"] == "", arr))
