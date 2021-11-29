@@ -53,7 +53,7 @@ def search():
 
         results = walmart_results + etsy_results + amazon_results
     elif sortBy == "price" or sortBy == "rating":
-        results = results[:min(numProducts, len(results)]
+        results = results[:min(numProducts, len(results))]
 
 
     return jsonify(results)
