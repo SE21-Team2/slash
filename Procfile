@@ -1,1 +1,1 @@
-web: python src/endpoints.py
+web: gunicorn server:app

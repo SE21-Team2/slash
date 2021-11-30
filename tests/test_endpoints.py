@@ -3,14 +3,14 @@ import sys
 import os
 import pytest
 
-sys.path.append(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'src')))
-import endpoints
+sys.path.append(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')))
+import server
 from flask import json
 
 
 @pytest.fixture
 def client():
-    app = endpoints.create_app()
+    app = server.create_app()
     app.config['TESTING'] = True
     with app.test_client() as client:
         yield client
