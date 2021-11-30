@@ -46,7 +46,7 @@ In order to run the app through Heroku, first ensure that the app is connected t
 3. Click the pencil icon, flip the switch to on, and click confirm, within the `worker` dyno.
 4. In a terminal, run `python server.py` in the root directory of the project.
 5. In a browser, go to `localhost:8080`.
-6. After changes to code, run `npm run build` before pushing to the repo.
+6. After changes to code, run `npm run build` in the frontend directory before pushing to the repo.
 
 ## Working with the Heroku PostgreSQL database
 Working directly with the PostgreSQL database can be done through the PostgreSQL command line interface `psql`.
