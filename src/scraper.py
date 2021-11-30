@@ -69,6 +69,12 @@ def searchWalmart(query):
         ratings = res.findAll("span", {"class": "w_DE"}, text=pattern)
         product = result_formatter.formatResult("walmart", titles, prices, links, ratings)
         products.append(product)
+
+        img = str(res.findAll("img", {"loading": "eager"}))
+        start = img.index("src=") + 5
+        end = img.index("srcset=") - 1
+        print("IMAGE:" + img[start: end])
+
     return products
 
 
