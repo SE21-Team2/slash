@@ -47,6 +47,11 @@ def searchAmazon(query):
         ratings = res.select("span.a-icon-alt")
         product = result_formatter.formatResult("amazon", titles, prices, links, ratings)
         products.append(product)
+
+        img = str(res.findAll("img", {"class": "s-image"}))
+        start = img.index("src=") + 5
+        end = img.index("srcset=") - 2
+        print("IMAGE:" + img[start: end])
     return products
 
 
