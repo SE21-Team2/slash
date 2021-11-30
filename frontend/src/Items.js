@@ -29,7 +29,7 @@ function Items({ items, currency, userLoggedIn }) {
 
     async function handleRemoveFromWishlist(item) {
         await fetch('/wishlistRemove', {
-            method: "POST",
+            method: "DELETE",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user: userLoggedIn, item })
         });
@@ -42,6 +42,7 @@ function Items({ items, currency, userLoggedIn }) {
         <table className="item-table">
             <thead>
                 <tr>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Source</th>
@@ -66,7 +67,14 @@ function Items({ items, currency, userLoggedIn }) {
 
 const Item = ({ item, currency, wishlist, onAddToWishlist, onRemoveFromWishlist }) => (
     <tr>
-        <td className="name-td"><a href={item.link}>{item.title}</a></td>
+        <td>
+            <div className="item-img-container">
+                <img alt={item.title} src={item.img_link} />
+            </div>
+        </td>
+        <td className="name-td">
+            <a href={item.link}>{item.title}</a>
+        </td>
         <td>{convertPrice(item.price, currency)}</td>
         <td>{item.website}</td>
         <td>{item.rating}</td>

@@ -38,6 +38,7 @@ function Wishlist({ userLoggedIn }) {
                         <table className="item-table">
                             <thead>
                                 <tr>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Source</th>
@@ -63,6 +64,11 @@ function Wishlist({ userLoggedIn }) {
 
 const WishlistItem = ({ item, currency, onRemoveFromWishlist }) => (
     <tr>
+        <td>
+            <div className="item-img-container">
+                <img alt={item.title} src={item.img_link} />
+            </div>
+        </td>
         <td className="name-td"><a href={item.link}>{item.title}</a></td>
         <td>{convertPrice(item.price, currency)}</td>
         <td>{item.website}</td>
