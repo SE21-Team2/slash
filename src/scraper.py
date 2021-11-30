@@ -52,10 +52,7 @@ def searchAmazon(query):
         images = res.find_all("img", src=True)
         if len(images) > 0:
             img = images[0]["src"]
-        # else:
-        #     continue
 
-        # print(img)
     return products
 
 
@@ -83,10 +80,6 @@ def searchWalmart(query):
         images = res.find_all("img", src=True)
         if len(images) > 0:
             img = images[0]["src"]
-        # else:
-        #     continue
-
-        # print(img)
 
     return products
 
@@ -119,10 +112,7 @@ def searchEtsy(query):
         images = item.find_all("img", src=True)
         if len(images) > 0:
             img = images[0]["src"]
-        # else:
-        #     continue
 
-        # print("ETSY:", img)
     return products
 
 
