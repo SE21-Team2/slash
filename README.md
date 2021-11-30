@@ -1,3 +1,5 @@
+Demo Video (To be uploaded)
+
 <p align="center"><img width="500" src="./assets/slash.png"></p>
 
 ![Python](https://img.shields.io/badge/python-v3.8+-yellow.svg)
@@ -74,27 +76,29 @@ Users can also register for and log in to a profile to create a wishlist of item
 
 #### 3. Create Wishlist
 After logging in, users can add search items to their wishlist.
-**To Add/Remove to Wishlist**
+**To Add to Wishlist**
 1. Start the application
 2. Log in and search for a product
-3. Click the `Add to wish list` button on the item you wish to add to your wishlist
-![addWishlist](https://user-images.githubusercontent.com/32313919/143975005-5850c601-7fee-4786-af8b-034055cb04f1.png)
-To remove, click the `Remove from wishlist` button on the item.
-You can also remove an item from the wishlist by going to the wishlist (see below).
+3. Click the `Add to wish list` button on the item you wish to add to your wishlist  
+![wishlistAdd](https://user-images.githubusercontent.com/32313919/143987978-0428425a-0037-4117-aebc-5352a5c7b693.png)
 
-![wishlistAdd](https://user-images.githubusercontent.com/32313919/143982415-32593181-3f9b-4d24-a6cc-b5e09b386d62.png)
+**To Remove from Wishlist**
+1. Click `Remove from wishlist` button on the item.
+You can also remove an item from the wishlist by going to the wishlist (see below).
+![wishlistRemove](https://user-images.githubusercontent.com/32313919/143987614-6ca26a33-d0dd-4a31-87ce-1cdca6265aea.png)
 
 **To View the Wishlist**
 1. Start the application
 2. Log in and click the `View Wishlist` button in the top right corner.
+![wishlist](https://user-images.githubusercontent.com/32313919/143987749-ef162758-7937-4c69-a8aa-33a4f6ba6246.png)
+
 
 #### 4. Sorting
 Users can sort the results by price or ratings in ascending or descending order. Sorting is done while getting results from e-commerce websites, so it must be refreshed with each search.
 1. Start the application and search for a product
 2. In the `Sort By` dropdown, select the desired sorting scheme
 3. Click the `Search` button
-![sort](https://user-images.githubusercontent.com/32313919/143982884-0697e4c7-ce21-442a-8942-48bc5405fb2e.png)
-
+![sort](https://user-images.githubusercontent.com/32313919/143985749-e5b01cb1-cf22-46a7-837d-3fae4335de79.png)
 
 #### 5.Currency
 Users can view the price of the items in various currencies (currently supports USD, EURO, AUD, YUAN, YEN, POUND).

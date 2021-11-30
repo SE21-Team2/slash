@@ -8,8 +8,8 @@ Gets details of items from e-commerce websites specified by the query parameters
  - query params: 
     - name=&lt;search product string>
     - numProducts=&lt;number of products to get>
-    - sortBy=<'Relevance' or 'Price'>
-    - displayOrder=<'asc' for ascending or 'desc' for descending>
+    - sortBy=&lt;'Relevance' or 'Price'>
+    - displayOrder=&lt;'asc' for ascending or 'desc' for descending>
     - currency=&lt;currency format>
  - expected response: 
    - list of items in _"item info"_ schema (described above)
@@ -45,18 +45,18 @@ Gets the user's wishlist
 ###POST /wishlistAdd
 Adds an item to the user's wishlist
  - request body: 
-   - { "user": <username>, "item": &lt;item info> }
+   - { "user": &lt;username>, "item": &lt;item info> }
  - expected response:
    - status code 200 OK
 
 ###DELETE /wishlistRemove
 Removes an item from the user's wishlist
- - request body: { "user": <username>, "item": &lt;item info> }
+ - request body: { "user": &lt;username>, "item": &lt;item info> }
  - expected response:
    - status code 200 OK
    
 ###DELETE /wishlistclear
 Clears the user's wishlist
- - request body: { "user": <username> }
+ - request body: { "user": &lt;username> }
  - expected response:
    - status code 200 OK

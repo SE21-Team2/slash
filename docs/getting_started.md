@@ -40,7 +40,13 @@ To set up and run Slash:
 
 ## Running the app through Heroku
 
-In order to run the app through Heroku, first ensure that the app is connected to, and deployed from, your GitHub repo. In the Heroku web UI for your app, navigate to `Deploy > GitHub` and connect the app to your Slash fork. After the app is deployed, navigate to `Resources` and click the pencil icon, flip the switch to on, and click confirm, within the `worker` dyno.
+In order to run the app through Heroku, first ensure that the app is connected to, and deployed from, your GitHub repo. 
+1. In the Heroku web UI for your app, navigate to `Deploy > GitHub` and connect the app to your Slash fork. 
+2. After the app is deployed, navigate to `Resources`
+3. Click the pencil icon, flip the switch to on, and click confirm, within the `worker` dyno.
+4. In a terminal, run `python server.py` in the root directory of the project.
+5. In a browser, go to `localhost:8080`.
+6. After changes to code, run `npm run build` before pushing to the repo.
 
 ## Working with the Heroku PostgreSQL database
 Working directly with the PostgreSQL database can be done through the PostgreSQL command line interface `psql`.
@@ -56,3 +62,6 @@ You should now be able to connect to the Heroku PostgreSQL database through the 
 
 ## Run Tests
 To run tests on Slash, run `pytest` in the root directory.
+
+## Run Pylint
+To run the pylint style checker on Slash, run `pylint` in the root directory.
