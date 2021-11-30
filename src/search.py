@@ -55,5 +55,6 @@ def search():
     elif sortBy == "price" or sortBy == "rating":
         results = results[:min(numProducts, len(results))]
 
-
+    print(results)
+    
     return jsonify(results)
