@@ -48,10 +48,10 @@ def searchAmazon(query):
         product = result_formatter.formatResult("amazon", titles, prices, links, ratings)
         products.append(product)
 
-        img = str(res.findAll("img", {"class": "s-image"}))
-        start = img.index("src=") + 5
-        end = img.index("srcset=") - 2
-        print("IMAGE:" + img[start: end])
+        # img = str(res.findAll("img", {"class": "s-image"}))
+        # start = img.index("src=") + 5
+        # end = img.index("srcset=") - 2
+        # print("IMAGE:" + img[start: end])
     return products
 
 
@@ -75,10 +75,10 @@ def searchWalmart(query):
         product = result_formatter.formatResult("walmart", titles, prices, links, ratings)
         products.append(product)
 
-        img = str(res.findAll("img", {"loading": "eager"}))
-        start = img.index("src=") + 5
-        end = img.index("srcset=") - 1
-        print("IMAGE:" + img[start: end])
+        # img = str(res.findAll("img", {"loading": "eager"}))
+        # start = img.index("src=") + 5
+        # end = img.index("srcset=") - 1
+        # print("IMAGE:" + img[start: end])
 
     return products
 
@@ -106,6 +106,15 @@ def searchEtsy(query):
         ratings = item.select('span.screen-reader-only')
         product = result_formatter.formatResult("Etsy", titles, prices, links, ratings)
         products.append(product)
+
+        img = str(item)
+        
+        try:
+            img = img[img.index("<img alt"):img.index("</div>") - 4]
+            img = img[img.index("src=\"") + 5:]
+        except:
+            continue
+        print("IMG:", img)
     return products
 
 
