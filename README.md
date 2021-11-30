@@ -1,4 +1,4 @@
-Demo Video (To be uploaded)
+Demo Video: https://www.youtube.com/watch?v=b3V1MQDvrE8
 
 <p align="center"><img width="500" src="./assets/slash.png"></p>
 
