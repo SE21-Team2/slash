@@ -54,7 +54,7 @@ To get started with Slash, follow the instructions in the [Getting Started Guide
 The main functionality of Slash is to search for products on various sites (currently supports Amazon, Walmart, Etsy). Users can go to the website to see the an item by clicking on the name of the item.
 1. Start the application
 2. Type the product you would like to search for in the search box
-3. Click the search button
+3. Click the `Search` button
 ![search](https://user-images.githubusercontent.com/32313919/143975603-50c03348-a4d9-49ec-89a0-dada25cb44ba.png)
 
 #### 2. Register Profile and Log In
@@ -75,7 +75,7 @@ Users can also register for and log in to a profile to create a wishlist of item
 ![login](https://user-images.githubusercontent.com/32313919/143945413-9b7c135f-2da9-48bf-a5e0-b9bbee0eca15.png)
 
 #### 3. Create Wishlist
-After logging in, users can add search items to their wishlist.
+After logging in, users can add search items to their wishlist.  
 **To Add to Wishlist**
 1. Start the application
 2. Log in and search for a product
@@ -113,12 +113,10 @@ For a list of specific changes in phase 3, see [Project 3 Changes](https://githu
 
 :earth_americas: Future Scope
 ---
-- Creating ordering and payment functionality for customers to directly order from command line
 - Scrape more e-commerce websites for wider range of options 
-- Add more parameters such as delivery days to get more information about the product 
 - Add functionality to store multiple wishlists from the output generated using the search query 
-- Add functionality to edit, delete, rename wishlists 
-- Add real time dynamic currency converters for different currencies all around the world
+- Extend the dynamic currency converters to more currencies
+- Allow downloading the search result items to CSV
 
 :thought_balloon: Use Case
 ---
