@@ -17,7 +17,7 @@
 |1|Issues reports: there are many | [Issues](https://github.com/SE21-Team2/slash/issues) |1|
 |.5|Use of code formatters. | [.pylintrc](https://github.com/SE21-Team2/slash/blob/main/.pylintrc)|.5|
 |.5|Use of style checkers | [.pylintrc](https://github.com/SE21-Team2/slash/blob/main/.pylintrc)|.5|
-|.5|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code. |TODO|0|
+|.5|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code. |[README.md](https://github.com/SE21-Team2/slash/blob/main/README.md)|.5|
 |.5|test cases exist  | [test folder](https://github.com/SE21-Team2/slash/blob/main/tests)|.5|
 |.5|Use of code coverage  | [Codecov](https://codecov.io/gh/SE21-Team2/slash)|.5|
 |.5|other automated analysis tools  | [Github Actions](https://github.com/SE21-Team2/slash/blob/main/.github/workflows/python-app.yml)|.5|
