@@ -14,11 +14,11 @@ def test_sortList():
     """
     Checks the sortList function
     """
-    arr = [{"title": "Item 2", "price":"$10"}, {"title": "Item 3","price":"$20"}, {"title": "Item 1","price":"$0"}]
-    ansArr = [{"title": "Item 1", "price":"$0"}, {"title": "Item 2", "price":"$10"}, {"title": "Item 3", "price":"$20"}]
-    revAnsArr = [{"title": "Item 3", "price":"$20"}, {"title": "Item 2", "price":"$10"}, {"title": "Item 1", "price":"$0"}]
-    assert result_formatter.sortList(arr, "pr", False) == ansArr
-    assert result_formatter.sortList(arr, "pr", True) == revAnsArr
+    arr = [{"title": "Item 2", "price":10}, {"title": "Item 3","price":20}, {"title": "Item 1","price":1}]
+    ansArr = [{"title": "Item 1", "price":1}, {"title": "Item 2", "price":10}, {"title": "Item 3", "price":20}]
+    revAnsArr = [{"title": "Item 3", "price":20}, {"title": "Item 2", "price":10}, {"title": "Item 1", "price":1}]
+    assert result_formatter.sortList(arr, "price", False) == ansArr
+    assert result_formatter.sortList(arr, "price", True) == revAnsArr
 
 def test_formatResults():
     """
@@ -28,7 +28,7 @@ def test_formatResults():
     prices = [BeautifulSoup('<div class="someclass">$0.99  </div>', "html.parser")]
     links = []
 
-    product = result_formatter.formatResult("example", titles, prices, links, "")
+    product = result_formatter.formatResult("example", titles, prices, links, "", "")
     ans = {"title":"title", "price":0.99, "website":"example"}
     print(product["website"], ans["website"])
 

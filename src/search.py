@@ -13,7 +13,7 @@ search_bp = Blueprint('search', __name__)
 
 '''
     Gets details of items from e-commerce websites specified by the query parameters.
-    request body: 
+    request body:
         name: search product string
         numProducts: number of products to get
         sortBy: 'Relevance' or 'Price'
@@ -55,6 +55,4 @@ def search():
     elif sortBy == "price" or sortBy == "rating":
         results = results[:min(numProducts, len(results))]
 
-    print(results)
-    
     return jsonify(results)

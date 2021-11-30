@@ -1,4 +1,6 @@
 export function convertPrice(price, currency) {
+    price = parseFloat(price);
+    
     if (currency === "inr") {
         return "₹" + (75 * price).toFixed(2);
     } else if (currency === "euro") {
