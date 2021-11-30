@@ -25,4 +25,4 @@
 |.5|test cases are routinely executed | [Github Actions](https://github.com/SE21-Team2/slash/blob/main/.github/workflows/python-app.yml)|.5|
 |1|Documentation describing how this version improves on the older version| [Project 3 Changes](https://github.com/SE21-Team2/slash/blob/main/docs/Project3Changes.md) |1|
 |3|This version is a little(1), some(2), much(3) improved on the last version.|Tutor's assessment.| 3|
-|16| Total| | 15.5|
+|16| Total| | 16|
