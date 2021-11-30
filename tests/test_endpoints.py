@@ -17,10 +17,10 @@ def client():
 
 
 def test_search(client) -> None:
-    rv = client.get('/search/?name=socks&numProducts=3&sortBy=pr&displayOrder=asc')
+    rv = client.get('/search/?name=socks&numProducts=3&sortBy=price&displayOrder=asc')
 
     # 9 items returned, 3 from each of the 3 implemented sources
-    assert len(rv.json) == 9
+    assert len(rv.json) == 3
     # status code check
     assert rv.status_code == 200
 
