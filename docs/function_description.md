@@ -70,8 +70,8 @@ file_path: path where the csv needs to be stored\
 **Returns**-\
 file_name: CSV file
 
-## endpoints.py
-Functions for starting Python Flask app.
+## db.py
+Module for connecting to the database and running PostgreSQL queries.
 
 ### REST API Endpoints
 **Please see [REST API Descriptions](https://github.com/SE21-Team2/slash/blob/main/docs/restapi_descriptions.md) for descriptions of the files *search.py*, *user.py*, and *wishlist.py*.**

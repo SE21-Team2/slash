@@ -1,79 +1,99 @@
-# CONTRIBUTING
+# Contributing to Slash
 
-Here is a set of guidelines which can assist you in contributing towards this project. We’d appreciate it if you could help us in improving our project which is hosted in SEProjGrp5/Slash on github.
+:+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
 
-We request you to please follow the Code of Conduct that we have created which is located here : https://github.com/SEProjGrp5/slash/blob/main/CODE-OF-CONDUCT.md
-# Table of content
-----------------------------------------------------------------------------------------------------
+The following is a set of guidelines for contributing to Slash. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
-[How can I contribute](#contribute)
+#### Table Of Contents
 
-- [Reporting Bugs](#bugs)
-- [Suggesting enhances](#enhances)
-- [Pull requests](#requests)
+[Code of Conduct](#code-of-conduct)
 
-[References](#reference)
+[I don't want to read this whole thing, I just have a question!!!](#i-dont-want-to-read-this-whole-thing-i-just-have-a-question)
 
-# How can I contribute<a name="contribute"></a>
-----------------------------------------------------------------------------------------------------
-## Reporting a Bug<a name="bugs"></a>
+[How Can I Contribute?](#how-can-i-contribute)
+  * [Pull Requests](#pull-requests)
+  * [Reporting Bugs](#reporting-bugs)
 
-This section guides you through submitting a bug report for this project. Following these guidelines helps maintainers and the community understand your report, reproduce the behavior and find related reports. Fill out the required template, the information it asks for helps us resolve issues faster.
+[Style Guides](#style-guides)
+  * [Git Commit Messages](#git-commit-messages)
+  * [Python Style Guide](#python-style-guide)
 
-### Before Submitting A Bug Report
-- Check the Debugging guide for the corresponding project. You might be able to find the cause of the problem and fix things yourself. 
-- Check the FAQs on the forum for a list of common questions and problems.
-- Determine which repository the problem should be reported in.
-- Perform a cursory search to see if the problem has already been reported. If it has and the issue is still open, add a comment to the existing issue instead of opening a new one.
+## Code of Conduct
+
+This project and everyone participating in it is governed by the [Slash Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to any of the original team members listed at the bottom of [README.md](README.md).
+
+## I don't want to read this whole thing I just have a question!!!
+
+Reach out to one of the main contributors on Discord using their IDs:
+* Shikha Nair: incorgnito#5402
+* Pradhan Chetan Venkataramaiah: PrymMinistah#4253
+* Steve Jones: SteveJones92#6974
+* Alex Snezkho: Apollo#4953
+* Tanya Chu: TC#1784
+
+*Note: Due to the dynamic nature of Discord IDs, these may change without prior notice on this page.*
+
+We do not have an official message board at this time, however, we plan to have one if it will help future contributors!
+
+## How Can I Contribute?
+
+### Pull Requests
+
+The process described here has several goals:
+
+- Maintain the projects quality
+
+- Fix problems that are important to users
+
+- Enable a sustainable system for the projects maintainers to review contributions
+
+Please follow these steps to have your contribution reviewed by the maintainers:
+
+1. Include a clear and descriptive title.
+2. Include a description of the change.
+
+While the prerequisites above must be satisfied prior to having your pull request reviewed, the reviewer(s) may ask you to complete additional design work, tests, or other changes before your pull request can be ultimately accepted.
+
+## Reporting Bugs
+
+This section guides you through submitting a bug report for Slash. 
+Following these guidelines helps maintainers and the community understand your report, reproduce the behavior and find related reports.
 
 ### How Do I Submit A (Good) Bug Report?
-Bugs are tracked as GitHub issues. After you've determined which repository your bug is related to, create an issue on that repository.
-Explain the problem and include additional details to help maintainers reproduce the problem:
 
 - Use a clear and descriptive title for the issue to identify the problem.
- 
-- Describe the exact steps which reproduce the problem in as many details as possible.When listing steps, don't just say what you did, but explain how you did it. 
- 
-- Provide specific examples to demonstrate the steps. Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples. If you're providing snippets in the issue, use Markdown code blocks.
- 
+
+- Describe the exact steps which reproduce the problem in as many details as possible.
+
+- Provide specific examples to demonstrate the steps. 
+
 - Describe the behavior you observed after following the steps and point out what exactly is the problem with that behavior.
- 
+
 - Explain which behavior you expected to see instead and why.
- 
-- If the problem wasn't triggered by a specific action, describe what you were doing before the problem happened and share more information using the guidelines below.
- 
- 
 
-## Suggesting Enhancements<a name="enhances"></a>
+- Include screenshots and animated GIFs which show you following the described steps and clearly demonstrate the problem. 
 
-This section guides you through submitting an enhancement suggestion for our project, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion and find related suggestions . Fill in the template, including the steps that you imagine you would take if the feature you're requesting existed.
+- If the problem is related to performance or memory, include a CPU profile capture with your report.
 
-### Before Submitting An Enhancement Suggestion
-- Check the Debugging guide for the corresponding project and look for the enhancement that is already available. 
-- Check the FAQs on the forum for a list of common questions and problems.
-- Determine which repository the enhancement should be suggested in.
-- Perform a cursory search to see if the enhancement has already been suggested. 
+## Style Guides
 
-### How Do I Submit A (Good) Enhancement Suggestion?
-Enhancement suggestions are tracked as GitHub issues. After you've determined which repository your enhancement is related to, create an issue on that repository and provide the following information : 
+### Git Commit Messages
 
-- Use a clear and descriptive title for the issue to identify the suggestion.
- 
-- Provide a step-by-step description of the suggested enhancement in as many details as possible.
- 
-- Provide specific examples to demonstrate the steps. Include copy/pasteable snippets which you use in those examples, as Markdown code blocks.
- 
-- Describe the current behavior and explain which behavior you expected to see instead and why.
- 
-- List some other text editors or applications where this enhancement exists.
- 
-## Pull Requests<a name="requests"></a>
-The process described here has several goals:
-- Maintain the project’s quality
-- Fix problems that are important to users
-- Engage the community in working toward the best possible solution
-- Enable a sustainable system for the project’s maintainers to review contributions
- 
-# References<a name="reference"></a>
----------------------------------------------------------------------------------------------------------------------
-https://github.com/atom/atom/blob/master/CONTRIBUTING.md
+- Describe why a change is being made.
+
+- Describe any limitations of the current code.
+
+- Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
+
+- Limit the first line to 72 characters or less
+
+- Link an issue to the change
+
+### Python Styleguide
+
+Changes to Slash Python code should conform to [Google Python Style Guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md).
+
+All Python code is linted with Pylint. Ensure that before you commit any changes, your code passes all default pylint checks. Pylint can be installed with
+`pip install pylint`.
+
+*This document is adapted from the [Atom Code of Conduct](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#code-of-conduct)*

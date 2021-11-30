@@ -11,7 +11,10 @@ Along with the web app, we have created REST API endpoints so that the tool can 
 Version 2 of Slash included the `Full Version` that allowed users to log in with their email address and create a wishlist. In project 3, we created a more sophisticated log in and authentication system with username and password and required users to register for a profile before logging in. The frontend UI also made it easier for users to view, add, remove items from their wishlist. This is implemented with connection to the database as described later in this document. 
 
 ### Sorting Logic Updates
-Previously, it is possible for users to specify the number of items to return. The tool would return that number of items for _each_ website and we thought that this would be confusing to the user. Instead, we decided to just return the specified number of items in the overall search. For the default search, it would attempt to return a fraction of the specified number for each website for a total of the given number. For the sorted searches, it would retrieve the specified number of items for each website and then sort the values. It would then only return the top values of the sorted list.
+Previously, it is possible for users to specify the number of items to return. The tool would return that number of items for _each_ website and we thought that this would be confusing to the user. Instead, we decided to just return the specified number (_num_) of items in the overall search. For the default search, it would attempt to return a fraction of _num_ for each website for a total of the given number. For the sorted searches, it would retrieve the specified number of items for each website and then sort the values. It would then only return the top _num_ values of the sorted list.
+
+### Scrape Item Image
+With the web app and user interface, the tool can now show an image of the item. This can better allow users to compare the items across sites and determine if they want the item. 
 
 ### Cloud Deployment
 The app can now be run through a Heroku dyno, allowing for better bot up-time and consistency and removing the inconvenience of forcing someone to run the bot locally on their own computer.

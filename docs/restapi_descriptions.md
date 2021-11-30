@@ -1,7 +1,7 @@
 #REST API Descriptions
 
 - &lt;item info> schema:  
-{ "name": ..., "price": ..., "website": ... (amazon, etsy, etc), "link": &lt;url>, "rating": ... } 
+{ "name": ..., "price": ..., "website": ... (amazon, etsy, etc), "link": &lt;url>, "rating": ..., "img_link": ... } 
 
 ###GET /search
 Gets details of items from e-commerce websites specified by the query parameters.
@@ -14,7 +14,7 @@ Gets details of items from e-commerce websites specified by the query parameters
  - expected response: 
    - list of items in _"item info"_ schema (described above)
 
-###GET /login
+###POST /login
 Logs users into their profile 
  - request body: 
    - { "username": ..., "password": ... }

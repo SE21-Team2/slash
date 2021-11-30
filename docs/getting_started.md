@@ -4,6 +4,7 @@ To set up and run Slash:
     * [Python 3](https://www.python.org/downloads/) 
     * [pip](https://pip.pypa.io/en/stable/installation/)
     * [git](https://git-scm.com/)
+    * [node.js](https://nodejs.org/en/download/)
 2. Clone this repo onto your local machine
     ```
     git clone https://github.com/SE21-Team2/slash.git
@@ -24,12 +25,12 @@ To set up and run Slash:
       ```
 5. To start the Slash web app locally, in the root directory, run
     ```
-    python src/endpoints.py
+    python server.py
     ```
    Open another terminal and run
     ```
     cd frontend
-    npm install
+    npm install # This only needs to be done once
     ```
    When the packages have completed installing, run
     ```
@@ -52,3 +53,6 @@ Setup:
    3. Connect the Heroku CLI to your Heroku app: from your project's root directory run `heroku git:remote -a <name-of-your-app>`
 
 You should now be able to connect to the Heroku PostgreSQL database through the `psql` client by running `heroku pg:psql` (if this step fails you may have not installed PostgreSQL correctly. Documentation for `psql` can be found [here](https://www.postgresql.org/docs/13/app-psql.html)
+
+## Run Tests
+To run tests on Slash, run `pytest` in the root directory.
