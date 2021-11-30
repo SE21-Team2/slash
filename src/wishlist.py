@@ -19,14 +19,14 @@ def wishlist():
     user = request.args.get('user')
 
     items = db.query(
-        f'SELECT name, price, website, link, rating FROM wishlist WHERE username = \'{user}\''
+        f'SELECT name, price, website, link, rating, img_link FROM wishlist WHERE username = \'{user}\''
     )
 
     dictionary_items = []
     # loop through db query items to append to dictionary to return
     for item in items:
         dictionary_items.append({"title": item[0], "price": item[1], "website": item[2],
-                                 "link": item[3], "rating": item[4]})
+                                 "link": item[3], "rating": item[4], "img_link": item[5]})
 
     # TODO altered column type of rating and price to real; should we change?
 
@@ -45,8 +45,8 @@ def wishlistAdd():
     # TODO convert price to generic currency and fix price hack used below
 
     db.query(
-        'INSERT INTO wishlist (username, name, price, website, link, rating) VALUES(%s, %s, %s, %s, %s, %s)',
-        (user, item['title'], item['price'], item['website'], item['link'], item['rating'])
+        'INSERT INTO wishlist (username, name, price, website, link, rating, img_link) VALUES(%s, %s, %s, %s, %s, %s, %s)',
+        (user, item['title'], item['price'], item['website'], item['link'], item['rating'], item['img_link'])
     )
 
     return '', 200  # OK
