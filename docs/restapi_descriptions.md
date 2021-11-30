@@ -57,6 +57,6 @@ Removes an item from the user's wishlist
    
 ###DELETE /wishlistclear
 Clears the user's wishlist
- - request body: { "user": <username>, "item": &lt;item info> }
+ - request body: { "user": <username> }
  - expected response:
    - status code 200 OK
