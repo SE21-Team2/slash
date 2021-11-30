@@ -12,7 +12,8 @@ Demo Video (To be uploaded)
 [![codecov](https://codecov.io/gh/SE21-Team2/slash/branch/main/graph/badge.svg?token=K0UIYGW138)](https://codecov.io/gh/SE21-Team2/slash)
 ![Lines of code](https://img.shields.io/tokei/lines/github/SE21-Team2/slash)
 ![Build Status](https://github.com/SE21-Team2/slash/actions/workflows/python-app.yml/badge.svg)
-[![DOI](https://zenodo.org/badge/423285546.svg)](https://zenodo.org/badge/latestdoi/423285546)
+[![DOI](https://zenodo.org/badge/426422668.svg)](https://zenodo.org/badge/latestdoi/426422668)
+
 
 
 Slash is a web application that scrapes the most popular e-commerce websites to get the best deals on the searched items across these websites. 
