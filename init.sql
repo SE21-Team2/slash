@@ -11,6 +11,7 @@ CREATE TABLE wishlist(
     website     VARCHAR NOT NULL,
     link        VARCHAR NOT NULL,
     rating      DECIMAL NOT NULL,
+    img_link    VARCHAR NOT NULL,
     CONSTRAINT userConstraint
         FOREIGN KEY(username) REFERENCES user_data(username)
 );
