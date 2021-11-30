@@ -56,5 +56,4 @@ def search():
         results = results[:min(numProducts, len(results))]
 
     print(results)
-    
     return jsonify(results)

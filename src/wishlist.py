@@ -32,7 +32,6 @@ def wishlist():
 
     return jsonify(dictionary_items)
 
-
 '''
     Adds an item to the user's wishlist
     request body: {"user": <username>, "item":<item info>}
