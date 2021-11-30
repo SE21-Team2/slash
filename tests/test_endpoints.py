@@ -59,7 +59,6 @@ def test_wishlist(client) -> None:
         data = json.loads(rv.get_data(as_text=True))
         assert data['valid']  # is True
 
-        # try:
         # nothing in wishlist for both
         rv = client.get('/wishlist/?user=test_user_1')
         assert len(rv.json) == 0
@@ -83,9 +82,11 @@ def test_wishlist(client) -> None:
         assert len(result) == 1
 
         expected = {"title": "socks", "price": "15.99", "website": "amazon", "link": "www.amazon.com/socks", "rating": "5", "img_link": "www.amazon.com/socks_image"}
+        
         for key in expected:
             if key in result and expected[key] == result[key]:
                 assert True
+        
         rv = client.get('/wishlist/?user=test_user_2')
         result = rv.json
         assert len(result) == 2
@@ -93,12 +94,14 @@ def test_wishlist(client) -> None:
             {"title": "shoes", "price": "55.99", "website": "amazon", "link": "www.amazon.com/shoes", "rating": "5", "img_link": "www.amazon.com/shoes_image"},
             {"title": "shirt", "price": "25.99", "website": "amazon", "link": "www.amazon.com/shirt", "rating": "5", "img_link": "www.amazon.com/shirt_image"}
         ]
+        
         for key in expected[0]:
             if key in result[0] and expected[0][key] == result[0][key]:
                 assert True
         for key in expected[1]:
             if key in result[1] and expected[1][key] == result[1][key]:
                 assert True
+        
 
         item = dict(title="socks", price="15.99", website="amazon", link="www.amazon.com/socks", rating="5", img_link="www.amazon.com/socks_image")
         rv = client.delete('/wishlistRemove/',
@@ -109,7 +112,6 @@ def test_wishlist(client) -> None:
 
         # nothing in wishlist for both
         rv = client.get('/wishlist/?user=test_user_1')
-        print(rv)
         assert len(rv.json) == 0
         assert rv.status_code == 200  # OK
 
@@ -123,7 +125,6 @@ def test_wishlist(client) -> None:
         rv = client.delete('/deleteuser/', json={"username": "test_user_2", "password": "password"})
         data = json.loads(rv.get_data(as_text=True))
         assert data['valid']  # is True
-
     except:
         client.delete('/wishlistClear/', json={"user": "test_user_1"})
         client.delete('/wishlistClear/', json={"user": "test_user_2"})
