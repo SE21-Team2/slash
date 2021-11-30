@@ -23,7 +23,7 @@ The app can now be run through a Heroku dyno, allowing for better bot up-time an
 Previously, all persistent data was stored in local files and each action would overwrite the entirety of data files. However, this approach suffers at scale, where datasets are large and operations are done frequently and concurrently. We transitioned persistent storage to use a PostgreSQL instance hosted through the Heroku cloud platform, to solve these issues. This also improves on the profile creation functionality so users can login to the wep app and view their saved wishlists.
 
 
-# Project 2 Documentation
+# Project 2 Documentation (CLI features replaced by Web API in Project 3)
 
 :golf: Flags and Command Line Arguments 
 ---
