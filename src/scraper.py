@@ -45,8 +45,15 @@ def searchAmazon(query):
         titles, prices, links = res.select("h2 a span"), res.select("span.a-price span"), res.select(
             "h2 a.a-link-normal")
         ratings = res.select("span.a-icon-alt")
-        product = result_formatter.formatResult("amazon", titles, prices, links, ratings)
+
+        img_link = ""
+        images = res.find_all("img", src=True)
+        if len(images) > 0:
+            img_link = images[0]["src"]
+
+        product = result_formatter.formatResult("amazon", titles, prices, links, ratings, img_link)
         products.append(product)
+
     return products
 
 
@@ -67,8 +74,15 @@ def searchWalmart(query):
     for res in results:
         titles, prices, links = res.select("span.lh-title"), res.select("div.lh-copy"), res.select("a")
         ratings = res.findAll("span", {"class": "w_DE"}, text=pattern)
-        product = result_formatter.formatResult("walmart", titles, prices, links, ratings)
+
+        img_link = ""
+        images = res.find_all("img", src=True)
+        if len(images) > 0:
+            img_link = images[0]["src"]
+
+        product = result_formatter.formatResult("walmart", titles, prices, links, ratings, img_link)
         products.append(product)
+
     return products
 
 
@@ -93,8 +107,15 @@ def searchEtsy(query):
             links = link_str
         titles, prices = (item.select("h3")), (item.select(".currency-value"))
         ratings = item.select('span.screen-reader-only')
-        product = result_formatter.formatResult("Etsy", titles, prices, links, ratings)
+
+        img_link = ""
+        images = item.find_all("img", src=True)
+        if len(images) > 0:
+            img_link = images[0]["src"]
+
+        product = result_formatter.formatResult("Etsy", titles, prices, links, ratings, img_link)
         products.append(product)
+
     return products
 
 

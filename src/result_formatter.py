@@ -12,7 +12,7 @@ import math
 from datetime import datetime
 
 
-def formatResult(website, titles, prices, links, ratings):
+def formatResult(website, titles, prices, links, ratings, img_link):
     """
     The formatResult function takes the scraped HTML as input, and extracts the
     necessary values from the HTML code. Ex. extracting a price '$19.99' from
@@ -46,7 +46,8 @@ def formatResult(website, titles, prices, links, ratings):
         "price": price,
         "link": formatted_link,
         "website": website,
-        "rating": rating
+        "rating": rating,
+        "img_link": img_link
     }
 
     return product
