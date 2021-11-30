@@ -48,7 +48,7 @@ function Login({ onSetUserLoggedIn }) {
                 <br />
                 <input type="submit" className="login-signup-button" value="Log In" />
             </form>
-            <h4>Don't have an account? <Link to="/signup" className="login-signup-link">Sign Up</Link></h4>
+            <h4>Don't have an account? <Link to="/signuppage" className="login-signup-link">Sign Up</Link></h4>
         </React.Fragment>
     );
 }

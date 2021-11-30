@@ -35,20 +35,20 @@ function App() {
                 {userLoggedIn
                     ? (
                         <React.Fragment>
-                            <Link to="/wishlist">View Wishlist</Link>
+                            <Link to="/wishlistpage">View Wishlist</Link>
                             <Link to="#" onClick={() => setUserLoggedIn(null)}>Log Out</Link>
                         </React.Fragment>
                     )
-                    : <Link to="/login">Log In</Link>
+                    : <Link to="/loginpage">Log In</Link>
                 }
             </div>
             <h1 id="slash-title"><Link to="/">SLASH</Link></h1>
             <main>
                 <Routes>
                     <Route path="/" element={<Home userLoggedIn={userLoggedIn} />} />
-                    <Route path="/wishlist" element={<Wishlist userLoggedIn={userLoggedIn} />} />
-                    <Route path="/login" element={<Login onSetUserLoggedIn={setUserLoggedIn} />} />
-                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/wishlistpage" element={<Wishlist userLoggedIn={userLoggedIn} />} />
+                    <Route path="/loginpage" element={<Login onSetUserLoggedIn={setUserLoggedIn} />} />
+                    <Route path="/signuppage" element={<SignUp />} />
                 </Routes>
             </main>
         </Router>

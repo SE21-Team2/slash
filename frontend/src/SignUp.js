@@ -24,7 +24,7 @@ function SignUp() {
         }).then(res => res.json());
 
         if (valid) {
-            navigate("/login");
+            navigate("/loginpage");
         } else {
             setInvalidSignUp(true);
         }
@@ -48,7 +48,7 @@ function SignUp() {
                 <br />
                 <input type="submit" className="login-signup-button" value="Sign Up" />
             </form>
-            <h4>Already have an account? <Link to="/login" className="login-signup-link">Login</Link></h4>
+            <h4>Already have an account? <Link to="/loginpage" className="login-signup-link">Login</Link></h4>
         </React.Fragment>
     );
 }
