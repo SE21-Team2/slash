@@ -17,7 +17,7 @@ Previously, it is possible for users to specify the number of items to return. T
 With the web app and user interface, the tool can now show an image of the item. This can better allow users to compare the items across sites and determine if they want the item. 
 
 ### Cloud Deployment
-The app can now be run through a Heroku dyno, allowing for better bot up-time and consistency and removing the inconvenience of forcing someone to run the bot locally on their own computer.
+The app can now be run through a Heroku dyno, allowing for better bot up-time and consistency and removing the inconvenience of forcing someone to run the bot locally on their own computer. An instance running the current state of the project can be found at [https://team2-slash.herokuapp.com/](https://team2-slash.herokuapp.com/).
 
 ### Database
 Previously, all persistent data was stored in local files and each action would overwrite the entirety of data files. However, this approach suffers at scale, where datasets are large and operations are done frequently and concurrently. We transitioned persistent storage to use a PostgreSQL instance hosted through the Heroku cloud platform, to solve these issues. This also improves on the profile creation functionality so users can login to the wep app and view their saved wishlists.
