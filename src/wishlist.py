@@ -19,7 +19,8 @@ def wishlist():
     user = request.args.get('user')
 
     items = db.query(
-        f'SELECT name, price, website, link, rating, img_link FROM wishlist WHERE username = \'{user}\''
+        'SELECT name, price, website, link, rating, img_link FROM wishlist WHERE username = %s',
+        (user,)
     )
 
     dictionary_items = []
@@ -27,8 +28,6 @@ def wishlist():
     for item in items:
         dictionary_items.append({"title": item[0], "price": str(item[1]), "website": item[2],
                                  "link": item[3], "rating": str(item[4]), "img_link": item[5]})
-
-    # TODO altered column type of rating and price to real; should we change?
 
     return jsonify(dictionary_items)
 
@@ -41,8 +40,6 @@ def wishlistAdd():
     data = request.get_json(force=True)
     user = data.get('user')
     item = data.get('item')
-
-    # TODO convert price to generic currency and fix price hack used below
 
     db.query(
         'INSERT INTO wishlist (username, name, price, website, link, rating, img_link) VALUES(%s, %s, %s, %s, %s, %s, %s)',
