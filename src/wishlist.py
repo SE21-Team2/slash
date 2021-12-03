@@ -43,7 +43,7 @@ def wishlistAdd():
 
     db.query(
         'INSERT INTO wishlist (username, name, price, website, link, rating, img_link) VALUES(%s, %s, %s, %s, %s, %s, %s)',
-        (user, item['title'], item['price'], item['website'], item['link'], item['rating'], item['img_link'])
+        (user, item['title'], item['price'], item['website'], item['link'], item['rating'] or 0, item['img_link'])
     )
 
     return '', 200  # OK
